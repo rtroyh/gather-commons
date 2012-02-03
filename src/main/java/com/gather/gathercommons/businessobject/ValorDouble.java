@@ -2,23 +2,23 @@ package com.gather.gathercommons.businessobject;
 
 public class ValorDouble {
 
-	private String descripcion;
-	private Double valor;
+    private String descripcion;
+    private Double valor;
 
-	public String getDescripcion() {
-		return descripcion;
-	}
+    public String getDescripcion() {
+        return descripcion;
+    }
 
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
 
-	public Double getValor() {
-		return valor;
-	}
+    public Double getValor() {
+        return valor;
+    }
 
-	public void setValor(Double valor) {
-		this.valor = valor;
-	}
+    public void setValor(Double valor) {
+        this.valor = valor;
+    }
 
 }

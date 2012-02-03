@@ -2,6 +2,7 @@ package com.gather.gathercommons.util;
 
 import com.gather.gathercommons.util.interfaces.IListUtil;
 import com.gather.gathercommons.util.interfaces.IMapUtil;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -9,7 +10,8 @@ import java.util.Map;
 public class Printer implements IMapUtil,
                                 IListUtil {
 
-    public String convertTOstring(Map<String, Object> map) throws RuntimeException {
+    public String convertTOstring(Map<String, Object> map) throws
+                                                           RuntimeException {
         String texto = "";
 
         if (map != null) {
@@ -17,12 +19,12 @@ public class Printer implements IMapUtil,
             for (Object o : map.values()) {
                 if (o instanceof String) {
                     texto += "'" +
-                             o +
-                             "'";
+                            o +
+                            "'";
                 } else if (o instanceof Integer ||
-                           o instanceof Double ||
-                           o instanceof Short ||
-                           o instanceof Long) {
+                        o instanceof Double ||
+                        o instanceof Short ||
+                        o instanceof Long) {
                     texto += String.valueOf(o);
                 } else if (o instanceof ArrayList) {
                     texto += this.convertTOstring(new ArrayList<Object>((ArrayList<?>) o));
@@ -35,7 +37,8 @@ public class Printer implements IMapUtil,
         return texto;
     }
 
-    public String convertTOstring(List<Object> list) throws RuntimeException {
+    public String convertTOstring(List<Object> list) throws
+                                                     RuntimeException {
         String text = "";
 
         if (Validator.validateList(list)) {

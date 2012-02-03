@@ -2,32 +2,33 @@ package com.gather.gathercommons.util;
 
 public class DigitoVerificador {
 
-	public static String calcula_dv(int rut) {
-		int aux = rut;
-		int digito;
-		int factor = 2;
-		int suma = 0;
-		int dv;
+    public static String calcula_dv(int rut) {
+        int aux = rut;
+        int digito;
+        int factor = 2;
+        int suma = 0;
+        int dv;
 
-		while (aux != 0) {
-			digito = aux % 10;
-			suma = suma +
-					factor *
-					digito;
-			aux /= 10;
-			factor++;
-			if (factor == 8)
-				factor = 2;
-		}
+        while (aux != 0) {
+            digito = aux % 10;
+            suma = suma +
+                    factor *
+                            digito;
+            aux /= 10;
+            factor++;
+            if (factor == 8) {
+                factor = 2;
+            }
+        }
 
-		dv = 11 - suma % 11;
+        dv = 11 - suma % 11;
 
-		if (dv == 11) {
-			return "0";
-		} else if (dv == 10) {
-			return "K";
-		} else {
-			return String.valueOf(dv);
-		}
-	}
+        if (dv == 11) {
+            return "0";
+        } else if (dv == 10) {
+            return "K";
+        } else {
+            return String.valueOf(dv);
+        }
+    }
 }

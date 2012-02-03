@@ -7,7 +7,8 @@ import com.gather.gathercommons.util.interfaces.IMapUtil;
 
 public class MapUtil implements IMapUtil {
 
-    public String convertTOstring(Map<String, Object> mapa) throws RuntimeException {
+    public String convertTOstring(Map<String, Object> mapa) throws
+                                                            RuntimeException {
         if (mapa != null) {
 
             StringBuilder sb = new StringBuilder(mapa.size() * 2);
@@ -19,10 +20,10 @@ public class MapUtil implements IMapUtil {
                     sb.append(o);
                     sb.append("'");
                 } else if (o instanceof Integer ||
-                           o instanceof Double ||
-                           o instanceof Short ||
-                           o instanceof Long ||
-                           o instanceof BigDecimal) {
+                        o instanceof Double ||
+                        o instanceof Short ||
+                        o instanceof Long ||
+                        o instanceof BigDecimal) {
                     sb.append(o);
                 } else if (o == null) {
                     sb.append("null");

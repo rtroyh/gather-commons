@@ -2,5 +2,5 @@ package com.gather.gathercommons.businessobject;
 
 public interface ITask {
 
-	public Object execute(Object o);
+    public Object execute(Object o);
 }

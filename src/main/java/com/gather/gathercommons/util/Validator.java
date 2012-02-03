@@ -34,9 +34,9 @@ public final class Validator {
     }
 
     public synchronized static Boolean validateList(String value,
-													Map<?, ?> map) {
+                                                    Map<?, ?> map) {
         if (map != null &&
-            value != null) {
+                value != null) {
             return Validator.validateList(map.get(value));
         }
 
@@ -45,8 +45,8 @@ public final class Validator {
 
     public synchronized static Boolean validateString(Object o) {
         if (o != null &&
-            o instanceof String &&
-            ((String) o).length() > 0) {
+                o instanceof String &&
+                ((String) o).length() > 0) {
             return true;
         }
 

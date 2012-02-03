@@ -11,23 +11,21 @@ import java.io.OutputStream;
 
 /**
  * CLASE DE AYUDA PARA MANIPULACION DE ARCHIVOS.
- * 
+ *
  * @author RTROY
- * 
  */
 public class FileHandler {
 
     /**
      * COPIA UN ARCHIVO DESDE UNA RUTA ORIGEN A OTRA RUTA DESTINO.
-     * 
-     * @param inFile
-     *            STRING
-     * @param outFile
-     *            STRING
+     *
+     * @param inFile  STRING
+     * @param outFile STRING
      * @throws java.io.IOException
      */
     public synchronized static void copy(String inFile,
-                                         String outFile) throws IOException {
+                                         String outFile) throws
+                                                         IOException {
         File fileIN = new File(inFile);
         File fileOUT = new File(outFile);
 
@@ -37,15 +35,14 @@ public class FileHandler {
 
     /**
      * COPIA UN ARCHIVO DESDE UNA RUTA ORIGEN A OTRA RUTA DESTINO.
-     * 
-     * @param inFile
-     *            java.io.File
-     * @param outFile
-     *            java.io.File
+     *
+     * @param inFile  java.io.File
+     * @param outFile java.io.File
      * @throws java.io.IOException
      */
     public synchronized static void copy(File inFile,
-                                         File outFile) throws IOException {
+                                         File outFile) throws
+                                                       IOException {
 
         if (!inFile.exists()) {
             return;

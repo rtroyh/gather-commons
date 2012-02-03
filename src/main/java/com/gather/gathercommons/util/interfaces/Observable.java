@@ -4,9 +4,9 @@ import java.util.List;
 
 public interface Observable {
 
-	public void addObserver(Observer observer);
+    public void addObserver(Observer observer);
 
-	public List<Observer> getObservers();
+    public List<Observer> getObservers();
 
-	public void updateObservers(Observable observable);
+    public void updateObservers(Observable observable);
 }

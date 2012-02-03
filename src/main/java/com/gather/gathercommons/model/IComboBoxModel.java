@@ -4,11 +4,11 @@ import java.util.List;
 
 public interface IComboBoxModel {
 
-	public List<List<Object>> getOptions();
+    public List<List<Object>> getOptions();
 
-	public void setOptions(List<List<Object>> options);
+    public void setOptions(List<List<Object>> options);
 
-	public Object getSelectedOption();
+    public Object getSelectedOption();
 
-	public void setSelectedOption(Object option);
+    public void setSelectedOption(Object option);
 }
