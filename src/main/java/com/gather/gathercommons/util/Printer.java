@@ -39,11 +39,36 @@ public class Printer implements IMapUtil,
 
     public String convertTOstring(List<Object> list) throws
                                                      RuntimeException {
-        String text = "";
+        String text = "[";
 
         if (Validator.validateList(list)) {
             for (int x = 0; x < list.size(); x++) {
                 Object obj = list.get(x);
+
+                if (obj instanceof ArrayList) {
+                    text += this.convertTOstring(new ArrayList<Object>((ArrayList<?>) obj));
+                } else if (obj != null) {
+                    text += String.valueOf(obj).trim();
+                }
+
+                text += ",";
+            }
+
+            text = text.substring(0,
+                                  text.length() - 1);
+            text += "]";
+        }
+
+        return text;
+    }
+
+    public String convertTOstring(Object[] param) throws
+                                                  RuntimeException {
+        String text = "";
+
+        if (param != null && param.length > 0) {
+            for (int x = 0; x < param.length; x++) {
+                Object obj = param[x];
 
                 if (obj instanceof ArrayList) {
                     text += this.convertTOstring(new ArrayList<Object>((ArrayList<?>) obj));
