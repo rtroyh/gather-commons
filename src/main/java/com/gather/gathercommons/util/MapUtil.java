@@ -1,9 +1,9 @@
 package com.gather.gathercommons.util;
 
+import com.gather.gathercommons.util.interfaces.IMapUtil;
+
 import java.math.BigDecimal;
 import java.util.Map;
-
-import com.gather.gathercommons.util.interfaces.IMapUtil;
 
 public class MapUtil implements IMapUtil {
 
