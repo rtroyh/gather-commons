@@ -12,54 +12,65 @@ public class Printer implements IMapUtil,
 
     public String convertTOstring(Map<String, Object> map) throws
                                                            RuntimeException {
-        String texto = "";
+        StringBuilder sb = new StringBuilder();
 
         if (map != null) {
 
             for (Object o : map.values()) {
                 if (o instanceof String) {
-                    texto += "'" +
-                            o +
-                            "'";
+                    sb.append("'");
+                    sb.append(o);
+                    sb.append("'");
                 } else if (o instanceof Integer ||
                         o instanceof Double ||
                         o instanceof Short ||
                         o instanceof Long) {
-                    texto += String.valueOf(o);
+                    sb.append(o);
                 } else if (o instanceof ArrayList) {
-                    texto += this.convertTOstring(new ArrayList<Object>((ArrayList<?>) o));
+                    sb.append(this.convertTOstring(new ArrayList<Object>((ArrayList<?>) o)));
                 }
 
-                texto += ",";
+                sb.append(",");
             }
         }
 
-        return texto;
+        return sb.toString();
     }
 
-    public String convertTOstring(List<Object> list) throws
-                                                     RuntimeException {
-        StringBuilder sb = new StringBuilder("[");
+    public String convertTOstring(List<Object> list, String separator, String delimiter1, String delimiter2) throws
+                                                                                                             RuntimeException {
+        StringBuilder sb = new StringBuilder(delimiter1);
 
         if (Validator.validateList(list)) {
             for (int x = 0; x < list.size(); x++) {
                 Object obj = list.get(x);
 
                 if (obj instanceof ArrayList) {
-                    sb.append(this.convertTOstring(new ArrayList<Object>((ArrayList<?>) obj)));
+                    sb.append(this.convertTOstring(new ArrayList<Object>((ArrayList<?>) obj),
+                                                   separator,
+                                                   delimiter1,
+                                                   delimiter2));
                 } else if (obj != null) {
                     sb.append(String.valueOf(obj).trim());
                 }
 
                 if (x < list.size() - 1) {
-                    sb.append(",");
+                    sb.append(separator);
                 }
             }
 
-            sb.append("]");
+            sb.append(delimiter2);
         }
 
         return sb.toString();
+    }
+
+    public String convertTOstring(List<Object> list) throws
+                                                     RuntimeException {
+        return this.convertTOstring(list,
+                                    ",",
+                                    "[",
+                                    "]");
     }
 
     public String convertTOstring(Object[] param) throws
