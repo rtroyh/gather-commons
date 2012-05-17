@@ -39,45 +39,45 @@ public class Printer implements IMapUtil,
 
     public String convertTOstring(List<Object> list) throws
                                                      RuntimeException {
-        String text = "[";
+        StringBuilder sb = new StringBuilder("[");
 
         if (Validator.validateList(list)) {
             for (int x = 0; x < list.size(); x++) {
                 Object obj = list.get(x);
 
                 if (obj instanceof ArrayList) {
-                    text += this.convertTOstring(new ArrayList<Object>((ArrayList<?>) obj));
+                    sb.append(this.convertTOstring(new ArrayList<Object>((ArrayList<?>) obj)));
                 } else if (obj != null) {
-                    text += String.valueOf(obj).trim();
+                    sb.append(String.valueOf(obj).trim());
                 }
 
-                text += ",";
+                if (x < list.size() - 1) {
+                    sb.append(",");
+                }
             }
 
-            text = text.substring(0,
-                                  text.length() - 1);
-            text += "]";
+            sb.append("]");
         }
 
-        return text;
+        return sb.toString();
     }
 
     public String convertTOstring(Object[] param) throws
                                                   RuntimeException {
-        String text = "";
+        StringBuilder sb = new StringBuilder("[");
 
         if (param != null && param.length > 0) {
             for (int x = 0; x < param.length; x++) {
                 Object obj = param[x];
 
                 if (obj instanceof ArrayList) {
-                    text += this.convertTOstring(new ArrayList<Object>((ArrayList<?>) obj));
+                    sb.append(this.convertTOstring(new ArrayList<Object>((ArrayList<?>) obj)));
                 } else if (obj != null) {
-                    text += String.valueOf(obj).trim();
+                    sb.append(String.valueOf(obj).trim());
                 }
             }
         }
 
-        return text;
+        return sb.toString();
     }
 }
