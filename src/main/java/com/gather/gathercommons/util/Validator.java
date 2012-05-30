@@ -44,26 +44,17 @@ public final class Validator {
     }
 
     public synchronized static Boolean validateString(Object o) {
-        if (o != null &&
-                o instanceof String &&
-                ((String) o).length() > 0) {
-            return true;
-        }
-
-        return false;
+        return o != null && o instanceof String && ((String) o).length() > 0;
     }
 
     public synchronized static Boolean validateString(Object o,
                                                       Integer size) {
-        if (o != null) {
-            if (o instanceof String) {
-                if (((String) o).length() == size) {
-                    return true;
-                }
-            }
-        }
+        return Validator.validateString(o) && ((String) o).length() == size;
+    }
 
-        return false;
+    public synchronized static Boolean validateString(Object o,
+                                                      String txt) {
+        return Validator.validateString(o) && o.equals(txt);
     }
 
     public synchronized static Boolean validateInteger(Object o) {
@@ -76,23 +67,15 @@ public final class Validator {
         return false;
     }
 
+    public synchronized static Boolean validateInteger(Object o,
+                                                       Integer x) {
+        return Validator.validateInteger(o) && o.equals(x);
+    }
+
     public synchronized static Boolean validateNumber(Object o) {
         if (o != null) {
             if (o instanceof Number) {
                 return true;
-            }
-        }
-
-        return false;
-    }
-
-    public synchronized static Boolean validateInteger(Object o,
-                                                       Integer x) {
-        if (o != null) {
-            if (o instanceof Integer) {
-                if (((Integer) o).equals(x)) {
-                    return true;
-                }
             }
         }
 
@@ -133,7 +116,7 @@ public final class Validator {
                                                     Integer x) {
         if (o != null) {
             if (o instanceof Long) {
-                if (((Long) o).equals(Long.valueOf(x))) {
+                if (o.equals(Long.valueOf(x))) {
                     return true;
                 }
             }
