@@ -1,5 +1,7 @@
 package com.gather.gathercommons.util;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
@@ -44,7 +46,7 @@ public final class Validator {
     }
 
     public synchronized static Boolean validateString(Object o) {
-        return o != null && o instanceof String && ((String) o).length() > 0;
+        return o != null && o instanceof String && StringUtils.isNotEmpty((String) o);
     }
 
     public synchronized static Boolean validateString(Object o,
