@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DefaultDataTableModel implements IDataTableModel {
-
     private List<Object> selectedRow;
 
     private List<List<Object>> titles;
