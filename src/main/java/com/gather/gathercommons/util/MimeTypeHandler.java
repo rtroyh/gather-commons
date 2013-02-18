@@ -2,7 +2,7 @@ package com.gather.gathercommons.util;
 
 public class MimeTypeHandler {
 
-    public static final String getMime(String ext) {
+    public static String getMime(String ext) {
         if (ext.trim().indexOf("pdf") > 0) {
             return "application/pdf";
         } else if (ext.trim().indexOf("xls") > 0) {
