@@ -2,7 +2,7 @@ package com.gather.gathercommons.util;
 
 public class DigitoVerificador {
 
-    public static String calcula_dv(int rut) {
+    public static String calcular(int rut) {
         int aux = rut;
         int digito;
         int factor = 2;
