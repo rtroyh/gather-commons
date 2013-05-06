@@ -1,6 +1,9 @@
 package com.gather.gathercommons.util;
 
+import com.gather.gathercommons.model.IComboBoxModel;
 import com.gather.gathercommons.model.IDataTableModel;
+
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -31,6 +34,22 @@ public class ModelCleaner {
             if (model.getSelectedRow() != null) {
                 model.getSelectedRow().clear();
                 model.setSelectedRow(null);
+            }
+        }
+    }
+
+    public static void cleanModel(IComboBoxModel model) {
+        if (model != null) {
+            if (model.getOptions() != null) {
+                model.getOptions().clear();
+                model.setOptions(null);
+            }
+
+            final Object selectedOption = model.getSelectedOption();
+            if (selectedOption != null) {
+                if (selectedOption instanceof List)
+                ((List) selectedOption).clear();
+                model.setSelectedOption(null);
             }
         }
     }
