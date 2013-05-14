@@ -1,7 +1,6 @@
 package com.gather.gathercommons.util;
 
 public class Mensaje {
-
     private String estiloError = "color: red;";
     private String estiloOK = "color: green;";
     private String mensaje;
