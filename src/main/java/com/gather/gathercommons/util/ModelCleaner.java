@@ -2,6 +2,7 @@ package com.gather.gathercommons.util;
 
 import com.gather.gathercommons.model.IComboBoxModel;
 import com.gather.gathercommons.model.IDataTableModel;
+import com.gather.gathercommons.model.IListModel;
 
 import java.util.List;
 
@@ -38,6 +39,15 @@ public class ModelCleaner {
         }
     }
 
+    public static void cleanModel(IListModel model) {
+        if (model != null) {
+            if (model.getRows() != null) {
+                model.getRows().clear();
+                model.setRows(null);
+            }
+        }
+    }
+
     public static void cleanModel(IComboBoxModel model) {
         if (model != null) {
             if (model.getOptions() != null) {
@@ -47,8 +57,9 @@ public class ModelCleaner {
 
             final Object selectedOption = model.getSelectedOption();
             if (selectedOption != null) {
-                if (selectedOption instanceof List)
-                ((List) selectedOption).clear();
+                if (selectedOption instanceof List) {
+                    ((List) selectedOption).clear();
+                }
                 model.setSelectedOption(null);
             }
         }
