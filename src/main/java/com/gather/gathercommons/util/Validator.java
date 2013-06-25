@@ -8,6 +8,17 @@ import java.util.Map;
 
 public final class Validator {
 
+    public static boolean valorEsCero(Object x) {
+        boolean valorEsCero = x.equals(0) || x.equals(0L) || x.equals(0F) || x.equals(new BigDecimal(0));
+
+        if (x instanceof BigDecimal) {
+            BigDecimal valor = (BigDecimal) x;
+            valorEsCero = valorEsCero || (valor.floatValue() == 0);
+        }
+
+        return valorEsCero;
+    }
+
     public synchronized static Boolean validateList(Object o) {
         if (o != null) {
             if (o instanceof List) {
