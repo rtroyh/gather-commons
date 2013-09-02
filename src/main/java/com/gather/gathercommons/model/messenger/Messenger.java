@@ -1,6 +1,5 @@
 package com.gather.gathercommons.model.messenger;
 
-import com.gather.gathercommons.model.IListModel;
 import com.gather.gathercommons.util.Validator;
 
 import java.util.ArrayList;
@@ -13,30 +12,26 @@ import java.util.List;
  * Time: 9:50 AM
  * To change this template use File | Settings | File Templates.
  */
-public final class Messenger implements IMessenger,
-                                        IListModel {
-    private List<List<Object>> rows;
-    private String message;
+public final class Messenger implements IMessenger {
+    private List<Object> row;
 
-    @Override
-    public List<List<Object>> getRows() {
-        if (this.rows == null) {
-            this.rows = new ArrayList<List<Object>>();
+    public List<Object> getRow() {
+        if (this.row == null) {
+            this.row = new ArrayList<Object>();
         }
 
-        return rows;
+        return row;
     }
 
-    @Override
-    public void setRows(List<List<Object>> rows) {
-        this.rows = rows;
+    public void setRow(List<Object> row) {
+        this.row = row;
     }
 
     public MessageType getType() {
-        final List<List<Object>> rows1 = this.getRows();
+        final List<Object> rows = this.getRow();
 
-        if (Validator.validateList(rows1)) {
-            final Object messageTypeID = rows1.get(0).get(0);
+        if (Validator.validateList(rows)) {
+            final Object messageTypeID = rows.get(0);
 
             if (messageTypeID instanceof Number) {
                 if (messageTypeID.toString().equals("0")) {
@@ -49,10 +44,16 @@ public final class Messenger implements IMessenger,
     }
 
     public final String getMessage() {
-        return message;
-    }
+        final List<Object> row = this.getRow();
 
-    public final void cleanMessage() {
-        this.message = null;
+        if (Validator.validateList(row)) {
+            final Object message = row.get(1);
+
+            if (message instanceof String) {
+                return message.toString();
+            }
+        }
+
+        return "";
     }
 }
