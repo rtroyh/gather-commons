@@ -34,13 +34,13 @@ public final class Messenger implements IMessenger {
             final Object messageTypeID = rows.get(0);
 
             if (messageTypeID instanceof Number) {
-                if (messageTypeID.toString().equals("0")) {
-                    return MessageType.ERROR;
+                if (messageTypeID.equals(0)) {
+                    return MessageType.INFO;
                 }
             }
         }
 
-        return MessageType.INFO;
+        return MessageType.ERROR;
     }
 
     public final String getMessage() {
