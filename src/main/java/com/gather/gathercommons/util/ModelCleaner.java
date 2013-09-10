@@ -48,6 +48,12 @@ public class ModelCleaner {
         }
     }
 
+    public static void cleanModel(List model) {
+        if (model != null) {
+            model.clear();
+        }
+    }
+
     public static void cleanModel(IComboBoxModel model) {
         if (model != null) {
             if (model.getOptions() != null) {
