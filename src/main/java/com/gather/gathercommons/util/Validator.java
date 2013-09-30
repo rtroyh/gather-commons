@@ -1,5 +1,6 @@
 package com.gather.gathercommons.util;
 
+import com.gather.gathercommons.model.IDataTableModel;
 import org.apache.commons.lang3.StringUtils;
 
 import java.math.BigDecimal;
@@ -132,6 +133,16 @@ public final class Validator {
                 if (o.equals(Long.valueOf(x))) {
                     return true;
                 }
+            }
+        }
+
+        return false;
+    }
+
+    public synchronized static Boolean validateDataTableModel(IDataTableModel model) {
+        if (model != null) {
+            if (Validator.validateList(model.getHeaders()) && Validator.validateList(model.getRows())) {
+                return true;
             }
         }
 
