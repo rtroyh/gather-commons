@@ -90,6 +90,8 @@ public final class Validator {
         if (o != null) {
             if (o instanceof Number) {
                 return true;
+            } else if (o instanceof String) {
+                return StringUtils.isNumeric(o.toString());
             }
         }
 

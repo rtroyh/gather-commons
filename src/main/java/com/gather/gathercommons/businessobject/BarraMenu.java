@@ -1,7 +1,6 @@
 package com.gather.gathercommons.businessobject;
 
 public class BarraMenu extends BaseObject {
-
     private Integer nivel;
     private String descripcion;
     private String ayuda;
@@ -68,5 +67,4 @@ public class BarraMenu extends BaseObject {
     public String toString() {
         return descripcion;
     }
-
 }
