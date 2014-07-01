@@ -20,16 +20,14 @@ i% / nMAGIC2 = 0;
 (i% / nMAGIC2) Mod nMAGIC = 0;
 
 
- cPsw$ = cPsw$ & Chr$(nPsw%)
- nAnt% = nAsc%
- jDir% = jDir% - 1
-
-
-                  else
-
-                   cPsw$ = Chr$(nPsw%) & cPsw$    ==> J               Chr$(nPsw%) ==>J
-                   nAnt% = nPsw%      ==> 74
-                   jDir% = jDir% + 1        ==> 2
+If iDir% > LEN_PSW Then kDir% = 1 Else kDir% = kDir% + 1
+    cPsw$ = cPsw$ & Chr$(nPsw%)
+    nAnt% = nAsc%
+    jDir% = jDir% - 1
+else
+    cPsw$ = Chr$(nPsw%) & cPsw$    ==> J               Chr$(nPsw%) ==>J
+    nAnt% = nPsw%                  ==> 74
+    jDir% = jDir% + 1             ==> 2
 
 
 When you run a macro, all the variables are initialized to a value.
