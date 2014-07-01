@@ -1,7 +1,5 @@
 package com.gather.gathercommons.util;
 
-import org.apache.commons.lang3.CharUtils;
-
 /**
  * Created with IntelliJ IDEA.
  * $ Project: gathercommons
@@ -34,8 +32,8 @@ public class Encryptor {
                 kDir = kDir + 1;
             }
 
-            final int nAsc = CharUtils.toIntValue(sPassword.charAt(jDir));
-            final int nKey = CharUtils.toIntValue(KEY_PSW.charAt(kDir));
+            final int nAsc = sPassword.charAt(jDir - 1);
+            final int nKey = KEY_PSW.charAt(kDir - 1);
             final int nPsw = nAsc ^ nKey ^ nAnt ^ ((i / nMAGIC2) % nMAGIC3);
 
             if (bEncript) {

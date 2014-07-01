@@ -3,39 +3,33 @@ http://161.131.198.62:8080/ficha/login.jsf?par1=CNFE&par2=g8_x&par3=500
 
 FALSE = ENCRIPTAR
 
+resultado test = cuadro cuadro E J
 
-paso cadena "test" ==>
+encryptorBAC("test",false) ==>        cuadro cuadro E J
         i = 0;
-                         j
-
         nAsc = 116;
-
-        t;
-
-
-                         nKey = 49; 1
-test = cuadro cuadro E J
+        nKey = 49; 1
 
 nPsw% = nAsc% Xor nKey% Xor nAnt% Xor ((i% / nMAGIC2) Mod nMAGIC3)
 
-nAsc = 116;    t
-nKey = 49; 1
-nPsw = 74;
+nAsc = 116;  ==>   t
+nKey = 49;   ==>   1
+nPsw = 74;   ==>   J
 
 i% / nMAGIC2 = 0;
 (i% / nMAGIC2) Mod nMAGIC = 0;
 
 
  cPsw$ = cPsw$ & Chr$(nPsw%)
-                  nAnt% = nAsc%
-                  jDir% = jDir% - 1
+ nAnt% = nAsc%
+ jDir% = jDir% - 1
 
 
                   else
 
-                    cPsw$ = Chr$(nPsw%) & cPsw$    ==> J               Chr$(nPsw%) ==>J
-                                     nAnt% = nPsw%      ==> 74
-                                     jDir% = jDir% + 1        ==> 2
+                   cPsw$ = Chr$(nPsw%) & cPsw$    ==> J               Chr$(nPsw%) ==>J
+                   nAnt% = nPsw%      ==> 74
+                   jDir% = jDir% + 1        ==> 2
 
 
 When you run a macro, all the variables are initialized to a value.

@@ -18,9 +18,15 @@ public class EncryptorTest {
     public void testMethod() {
         LOG.info("INICIO TEST ENCRIPTACION");
 
-        Encryptor encryptor = new Encryptor();
+        final Encryptor encryptor = new Encryptor();
+        final String test = encryptor.encryptorBAC("test",
+                                                   false);
 
-        LOG.info(encryptor.encryptorBAC("test",
-                                        true));
+        LOG.info(test.trim() + " length=" + test.length());
+
+        for (int x = 0; x < test.length(); x++) {
+            int value = test.charAt(x);
+            LOG.info(test.charAt(x) + " ==> " + value);
+        }
     }
 }
