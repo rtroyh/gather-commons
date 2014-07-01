@@ -2,6 +2,7 @@ package com.gather.gathercommons.util;
 
 import com.gather.gathercommons.model.IDataTableModel;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.math.NumberUtils;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -91,7 +92,7 @@ public final class Validator {
             if (o instanceof Number) {
                 return true;
             } else if (o instanceof String) {
-                return StringUtils.isNumeric(o.toString());
+                return NumberUtils.isNumber(o.toString());
             }
         }
 
