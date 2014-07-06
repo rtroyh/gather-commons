@@ -24,19 +24,26 @@ public class EncryptorTest {
         //FALSE = ENCRIPTAR
         final Encryptor encryptor = new Encryptor();
 
-        String text = "123";
-        LOG.info(text);
-        final String textEncriptado = encryptor.encryptorBAC(text,
-                                                             false);
-        final String desEncriptado = encryptor.encryptorBAC(textEncriptado,
-                                                            true);
+        String text = " 160972823";
+        LOG.info("TEXTO A ENCRIPTAR = " + text);
+
+
+        final String encryptedText = encryptor.encryptorBAC(text,
+                                                            false);
+        LOG.info("TEXTO ENCRIPTADO= " + encryptedText);
+
+
+        final String decipherText = encryptor.encryptorBAC(encryptedText,
+                                                           true);
+        LOG.info("TEXTO DESENCRIPTADO= " + decipherText);
+
 
         try {
             PrintWriter writer = new PrintWriter("encriptados.txt",
                                                  "UTF-8");
             writer.println(text);
-            writer.println(textEncriptado);
-            writer.println(desEncriptado);
+            writer.println(encryptedText);
+            writer.println(decipherText);
 
             writer.close();
         } catch (FileNotFoundException e) {
@@ -45,11 +52,11 @@ public class EncryptorTest {
             e.printStackTrace();
         }
 
-        LOG.info("'" + textEncriptado.trim() + "' length=" + textEncriptado.length());
+        LOG.info(encryptedText.trim() + " length=" + encryptedText.length());
 
-        for (int x = 0; x < textEncriptado.length(); x++) {
-            int value = textEncriptado.charAt(x);
-            LOG.info(textEncriptado.charAt(x) + " ==> " + value);
+        for (int x = 0; x < encryptedText.length(); x++) {
+            int value = encryptedText.charAt(x);
+            LOG.info(encryptedText.charAt(x) + " ==> " + value);
         }
     }
 }
