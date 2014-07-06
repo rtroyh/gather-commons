@@ -1,0 +1,6 @@
+http://161.131.198.62:8080/ficha/login.jsf?par1=AFAE&par2=g}#^w&par3=552195
+http://161.131.198.62:8080/ficha/login.jsf?par1=CNFE&par2=qm4S{&par3=552162
+http://161.131.198.62:8080/ficha/login.jsf?par1=CNFE&par2=g}#^w&par3=552165
+http://161.131.198.62:8080/ficha/login.jsf?par1=CNFE&par2=g}#^w&par3=552165 
+http://161.131.198.62:8080/ficha/login.jsf?par1=CNFE&par2=g}#^w&par3=552166 
+http://161.131.198.62:8080/ficha/login.jsf?par1=CNFE&par2=g}#^w&par3=552151

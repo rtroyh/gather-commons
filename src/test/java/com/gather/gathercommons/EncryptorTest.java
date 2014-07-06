@@ -4,6 +4,10 @@ import com.gather.gathercommons.util.Encryptor;
 import org.apache.log4j.Logger;
 import org.testng.annotations.Test;
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
 /**
  * Created with IntelliJ IDEA.
  * $ Project: gathercommons
@@ -17,16 +21,35 @@ public class EncryptorTest {
     @Test
     public void testMethod() {
         LOG.info("INICIO TEST ENCRIPTACION");
-
+        //FALSE = ENCRIPTAR
         final Encryptor encryptor = new Encryptor();
-        final String test = encryptor.encryptorBAC("test",
-                                                   false);
 
-        LOG.info(test.trim() + " length=" + test.length());
+        String text = "123";
+        LOG.info(text);
+        final String textEncriptado = encryptor.encryptorBAC(text,
+                                                             false);
+        final String desEncriptado = encryptor.encryptorBAC(textEncriptado,
+                                                            true);
 
-        for (int x = 0; x < test.length(); x++) {
-            int value = test.charAt(x);
-            LOG.info(test.charAt(x) + " ==> " + value);
+        try {
+            PrintWriter writer = new PrintWriter("encriptados.txt",
+                                                 "UTF-8");
+            writer.println(text);
+            writer.println(textEncriptado);
+            writer.println(desEncriptado);
+
+            writer.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+        LOG.info("'" + textEncriptado.trim() + "' length=" + textEncriptado.length());
+
+        for (int x = 0; x < textEncriptado.length(); x++) {
+            int value = textEncriptado.charAt(x);
+            LOG.info(textEncriptado.charAt(x) + " ==> " + value);
         }
     }
 }
