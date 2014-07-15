@@ -21,6 +21,18 @@ public final class Validator {
         return valorEsCero;
     }
 
+    public synchronized static Boolean validateDate(Object o) {
+        if (o != null) {
+            if (o instanceof java.sql.Date) {
+                return true;
+            } else if (o instanceof java.util.Date) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public synchronized static Boolean validateList(Object o) {
         if (o != null) {
             if (o instanceof List) {
@@ -50,8 +62,7 @@ public final class Validator {
 
     public synchronized static Boolean validateList(String value,
                                                     Map<?, ?> map) {
-        if (map != null &&
-                value != null) {
+        if (map != null && value != null) {
             return Validator.validateList(map.get(value));
         }
 
