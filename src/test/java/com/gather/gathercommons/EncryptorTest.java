@@ -24,7 +24,7 @@ public class EncryptorTest {
         //FALSE = ENCRIPTAR
         final Encryptor encryptor = new Encryptor();
 
-        String text = " 160972823";
+        String text = "GFUENTT";
         LOG.info("TEXTO A ENCRIPTAR = " + text);
 
 
@@ -56,7 +56,7 @@ public class EncryptorTest {
 
         for (int x = 0; x < encryptedText.length(); x++) {
             int value = encryptedText.charAt(x);
-            LOG.info(encryptedText.charAt(x) + " ==> " + value);
+            LOG.info(x + ". " + encryptedText.charAt(x) + " ==> " + value);
         }
     }
 }
