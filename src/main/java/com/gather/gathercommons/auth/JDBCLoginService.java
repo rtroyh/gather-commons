@@ -28,6 +28,7 @@ import java.sql.DriverManager;
 import java.util.Properties;
 
 public class JDBCLoginService extends LoginService {
+
     private static final Logger LOG = Logger.getLogger(JDBCLoginService.class);
 
     /**
