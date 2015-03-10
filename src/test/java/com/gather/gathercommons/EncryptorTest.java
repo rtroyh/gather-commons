@@ -30,12 +30,12 @@ public class EncryptorTest {
 
         final String encryptedText = encryptor.encryptorBAC(text,
                                                             false);
-        LOG.info("TEXTO ENCRIPTADO= " + encryptedText);
+        LOG.info("TEXTO ENCRIPTADO = " + encryptedText);
 
 
         final String decipherText = encryptor.encryptorBAC(encryptedText,
                                                            true);
-        LOG.info("TEXTO DESENCRIPTADO= " + decipherText);
+        LOG.info("TEXTO DESENCRIPTADO = " + decipherText);
 
 
         try {
@@ -52,7 +52,7 @@ public class EncryptorTest {
             e.printStackTrace();
         }
 
-        LOG.info(encryptedText.trim() + " length=" + encryptedText.length());
+        LOG.info(encryptedText.trim() + " length =" + encryptedText.length());
 
         for (int x = 0; x < encryptedText.length(); x++) {
             int value = encryptedText.charAt(x);

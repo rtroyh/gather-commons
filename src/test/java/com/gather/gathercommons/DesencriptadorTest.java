@@ -50,7 +50,6 @@ public class DesencriptadorTest {
                 line = br.readLine();
             }
 
-
             br.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
