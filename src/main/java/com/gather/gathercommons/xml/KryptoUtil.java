@@ -41,7 +41,7 @@ public class KryptoUtil {
         KeyPairGenerator keyGen;
         try {
             keyGen = KeyPairGenerator.getInstance(ALGORITHM);
-            keyGen.initialize(1024);
+            keyGen.initialize(2048);
             keyPair = keyGen.genKeyPair();
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();

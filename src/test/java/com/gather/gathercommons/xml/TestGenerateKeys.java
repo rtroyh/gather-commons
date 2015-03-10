@@ -4,6 +4,10 @@
  */
 package com.gather.gathercommons.xml;
 
+import org.apache.log4j.Logger;
+
+import java.io.File;
+
 /**
  * This class is used as a test class to generate the cryptographic keys ie
  * public and private key.
@@ -12,13 +16,19 @@ package com.gather.gathercommons.xml;
  * @since 2013
  */
 public class TestGenerateKeys {
+    private static final Logger LOG = Logger.getLogger(TestGenerateKeys.class);
     /*
      * Main method to generate the keys
      */
     public static void main(String[] args) {
-        String keysDirPath = "keys";
+        LOG.info("INICIO TEST");
+
+        String keysDirPath = new File("").getAbsolutePath();
+        LOG.info("keysDirPath: " + keysDirPath);
+
         KryptoUtil util = new KryptoUtil();
         util.storeKeyPairs(keysDirPath);
-        System.out.println("Private and Public Keys generated successfully ...");
+        LOG.info("Private and Public Keys generated successfully ...");
+        LOG.info("Las llaves estan creadas en el directorio workspace ...");
     }
 }

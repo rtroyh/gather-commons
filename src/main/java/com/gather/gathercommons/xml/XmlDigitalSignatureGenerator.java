@@ -25,6 +25,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.security.*;
 import java.util.Collections;
+import java.util.List;
 
 /**
  * This class is used to provide convenient methods to digitally sign an XML
@@ -45,6 +46,7 @@ public class XmlDigitalSignatureGenerator {
         Document doc = null;
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         dbf.setNamespaceAware(true);
+
         try {
             doc = dbf.newDocumentBuilder().parse(new FileInputStream(xmlFilePath));
         } catch (ParserConfigurationException ex) {
@@ -56,6 +58,7 @@ public class XmlDigitalSignatureGenerator {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+
         return doc;
     }
 
@@ -133,20 +136,30 @@ public class XmlDigitalSignatureGenerator {
         Reference ref = null;
         SignedInfo signedInfo = null;
 
+
         try {
+            final DigestMethod digestMethod = xmlSigFactory.newDigestMethod(DigestMethod.SHA256,
+                                                                            null);
+            final CanonicalizationMethod canonicalizationMethod = xmlSigFactory.newCanonicalizationMethod("http://www.w3.org/2001/10/xml-exc-c14n#",
+                                                                                                          (C14NMethodParameterSpec) null);
+            final SignatureMethod signatureMethod = xmlSigFactory.newSignatureMethod(SignatureMethod.RSA_SHA1,
+                                                                                     null);
+
+            final Transform transform = xmlSigFactory.newTransform(Transform.ENVELOPED,
+                                                                   (TransformParameterSpec) null);
+            final List<Transform> transforms = Collections.singletonList(transform);
+
             ref = xmlSigFactory.newReference("",
-                                             xmlSigFactory.newDigestMethod(DigestMethod.SHA1,
-                                                                           null),
-                                             Collections.singletonList(xmlSigFactory.newTransform(Transform.ENVELOPED,
-                                                                                                  (TransformParameterSpec) null)),
+                                             digestMethod,
+                                             transforms,
                                              null,
                                              null);
-            signedInfo = xmlSigFactory.newSignedInfo(
-                    xmlSigFactory.newCanonicalizationMethod(CanonicalizationMethod.INCLUSIVE,
-                                                            (C14NMethodParameterSpec) null),
-                    xmlSigFactory.newSignatureMethod(SignatureMethod.RSA_SHA1,
-                                                     null),
-                    Collections.singletonList(ref));
+
+            final List<Reference> references = Collections.singletonList(ref);
+
+            signedInfo = xmlSigFactory.newSignedInfo(canonicalizationMethod,
+                                                     signatureMethod,
+                                                     references);
         } catch (NoSuchAlgorithmException ex) {
             ex.printStackTrace();
         } catch (InvalidAlgorithmParameterException ex) {
