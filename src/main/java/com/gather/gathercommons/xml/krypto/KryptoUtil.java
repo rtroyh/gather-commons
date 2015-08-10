@@ -1,4 +1,4 @@
-package com.gather.gathercommons.xml;
+package com.gather.gathercommons.xml.krypto;
 
 import java.io.File;
 import java.io.FileInputStream;

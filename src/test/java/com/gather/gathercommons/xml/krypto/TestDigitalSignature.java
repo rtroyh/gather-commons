@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.gather.gathercommons.xml;
+package com.gather.gathercommons.xml.krypto;
 
 import java.io.File;
 

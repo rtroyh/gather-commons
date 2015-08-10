@@ -1,6 +1,5 @@
-package com.gather.gathercommons;
+package com.gather.gathercommons.util;
 
-import com.gather.gathercommons.util.MesesUtil;
 import org.apache.log4j.Logger;
 import org.testng.annotations.Test;
 

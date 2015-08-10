@@ -1,4 +1,4 @@
-package com.gather.gathercommons.xml;
+package com.gather.gathercommons.xml.krypto;
 
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
