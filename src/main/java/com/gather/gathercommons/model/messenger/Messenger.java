@@ -15,6 +15,13 @@ import java.util.List;
 public final class Messenger implements IMessenger {
     private List<Object> row;
 
+    public Messenger() {
+    }
+
+    public Messenger(List<Object> row) {
+        this.row = row;
+    }
+
     public List<Object> getRow() {
         if (this.row == null) {
             this.row = new ArrayList<Object>();
