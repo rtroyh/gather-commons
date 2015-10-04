@@ -1,7 +1,6 @@
 package com.gather.gathercommons.util;
 
 public final class Acentos {
-
     private static final String a = "á";
     private static final String e = "é";
     private static final String i = "í";
