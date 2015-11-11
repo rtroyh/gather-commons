@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Map;
 
 public final class Validator {
-
     public static boolean valorEsCero(Object x) {
         boolean valorEsCero = x.equals(0.0) || x.equals(0) || x.equals(0L) || x.equals(0F) || x.equals(new BigDecimal(0));
 
@@ -21,7 +20,7 @@ public final class Validator {
         return valorEsCero;
     }
 
-    public synchronized static Boolean validateDate(Object o) {
+    public static Boolean validateDate(Object o) {
         if (o != null) {
             if (o instanceof java.sql.Date) {
                 return true;
@@ -33,7 +32,7 @@ public final class Validator {
         return false;
     }
 
-    public synchronized static Boolean validateList(Object o) {
+    public static Boolean validateList(Object o) {
         if (o != null) {
             if (o instanceof List) {
                 if (!((List<?>) o).isEmpty()) {
@@ -45,8 +44,8 @@ public final class Validator {
         return false;
     }
 
-    public synchronized static Boolean validateList(Object o,
-                                                    Integer size) {
+    public static Boolean validateList(Object o,
+                                       Integer size) {
         if (o != null) {
             if (o instanceof List) {
                 if (!((List<?>) o).isEmpty()) {
@@ -60,8 +59,8 @@ public final class Validator {
         return false;
     }
 
-    public synchronized static Boolean validateList(String value,
-                                                    Map<?, ?> map) {
+    public static Boolean validateList(String value,
+                                       Map<?, ?> map) {
         if (map != null && value != null) {
             return Validator.validateList(map.get(value));
         }
@@ -69,21 +68,21 @@ public final class Validator {
         return false;
     }
 
-    public synchronized static Boolean validateString(Object o) {
+    public static Boolean validateString(Object o) {
         return o != null && o instanceof String && StringUtils.isNotEmpty((String) o);
     }
 
-    public synchronized static Boolean validateString(Object o,
-                                                      Integer size) {
+    public static Boolean validateString(Object o,
+                                         Integer size) {
         return Validator.validateString(o) && ((String) o).length() == size;
     }
 
-    public synchronized static Boolean validateString(Object o,
-                                                      String txt) {
+    public static Boolean validateString(Object o,
+                                         String txt) {
         return Validator.validateString(o) && o.equals(txt);
     }
 
-    public synchronized static Boolean validateInteger(Object o) {
+    public static Boolean validateInteger(Object o) {
         if (o != null) {
             if (o instanceof Integer) {
                 return true;
@@ -93,12 +92,12 @@ public final class Validator {
         return false;
     }
 
-    public synchronized static Boolean validateInteger(Object o,
-                                                       Integer x) {
+    public static Boolean validateInteger(Object o,
+                                          Integer x) {
         return Validator.validateInteger(o) && o.equals(x);
     }
 
-    public synchronized static Boolean validateNumber(Object o) {
+    public static Boolean validateNumber(Object o) {
         if (o != null) {
             if (o instanceof Number) {
                 return true;
@@ -110,7 +109,7 @@ public final class Validator {
         return false;
     }
 
-    public synchronized static Boolean validateDouble(Object o) {
+    public static Boolean validateDouble(Object o) {
         if (o != null) {
             if (o instanceof Double) {
                 return true;
@@ -120,7 +119,7 @@ public final class Validator {
         return false;
     }
 
-    public synchronized static Boolean validateBigDecimal(Object o) {
+    public static Boolean validateBigDecimal(Object o) {
         if (o != null) {
             if (o instanceof BigDecimal) {
                 return true;
@@ -130,7 +129,7 @@ public final class Validator {
         return false;
     }
 
-    public synchronized static Boolean validateLong(Object o) {
+    public static Boolean validateLong(Object o) {
         if (o != null) {
             if (o instanceof Long) {
                 return true;
@@ -140,8 +139,8 @@ public final class Validator {
         return false;
     }
 
-    public synchronized static Boolean validateLong(Object o,
-                                                    Integer x) {
+    public static Boolean validateLong(Object o,
+                                       Integer x) {
         if (o != null) {
             if (o instanceof Long) {
                 if (o.equals(Long.valueOf(x))) {
@@ -153,7 +152,7 @@ public final class Validator {
         return false;
     }
 
-    public synchronized static Boolean validateDataTableModel(IDataTableModel model) {
+    public static Boolean validateDataTableModel(IDataTableModel model) {
         if (model != null) {
             if (Validator.validateList(model.getHeaders()) && Validator.validateList(model.getRows())) {
                 return true;
