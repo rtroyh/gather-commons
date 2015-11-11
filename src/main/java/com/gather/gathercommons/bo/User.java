@@ -1,4 +1,4 @@
-package com.gather.gathercommons.businessobject;
+package com.gather.gathercommons.bo;
 
 public class User {
 
