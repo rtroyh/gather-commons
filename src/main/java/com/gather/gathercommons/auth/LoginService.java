@@ -24,7 +24,6 @@ import javax.swing.*;
 import java.awt.*;
 
 public abstract class LoginService {
-
     private SwingWorker<Boolean, Void> loginWorker;
 
     /*
@@ -54,7 +53,8 @@ public abstract class LoginService {
      * @return <code>true</code> on authentication success
      * @throws Exception
      */
-    public abstract boolean authenticate(String name, char[] password,
+    public abstract boolean authenticate(String name,
+                                         char[] password,
                                          String server) throws
                                                         Exception;
 
@@ -90,7 +90,8 @@ public abstract class LoginService {
      * @param server   server
      * @throws Exception
      */
-    public void startAuthentication(final String user, final char[] password,
+    public void startAuthentication(final String user,
+                                    final char[] password,
                                     final String server) throws
                                                          Exception {
         if (getSynchronous()) {
