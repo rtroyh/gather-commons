@@ -115,6 +115,8 @@ public class JDBCLoginService extends LoginService {
     private void connectByJNDI(String userName,
                                char[] password) throws
                                                 Exception {
+        LOG.info("INICIO CONEXION POR JNDI");
+
         InitialContext ctx = new InitialContext();
         javax.sql.DataSource ds = (javax.sql.DataSource) ctx.lookup(jndiContext);
         conn = ds.getConnection(userName,
@@ -137,7 +139,11 @@ public class JDBCLoginService extends LoginService {
     private void connectByDriverManager(String userName,
                                         char[] password) throws
                                                          Exception {
+        LOG.info("INICIO CONEXION POR DRIVER MANAGER");
+
         if (getProperties() != null) {
+            LOG.info("USANDO PROPIEDADES");
+
             try {
                 conn = DriverManager.getConnection(getUrl(),
                                                    getProperties());
