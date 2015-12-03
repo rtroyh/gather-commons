@@ -1,7 +1,5 @@
 package com.gather.gathercommons.util.printer;
 
-import com.gather.gathercommons.util.printer.IMapUtil;
-
 import java.util.Map;
 
 public class MapUtil implements IMapUtil {
@@ -19,6 +17,9 @@ public class MapUtil implements IMapUtil {
                     sb.append("'");
                     sb.append(o);
                     sb.append("'");
+                } else if (o instanceof Double) {
+                    sb.append(String.format("%s",
+                                            o));
                 } else {
                     sb.append(o.toString());
                 }
