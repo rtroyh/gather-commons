@@ -1,4 +1,4 @@
-package com.gather.gathercommons.bo;
+package com.gather.gathercommons.domain;
 
 public class User {
 
