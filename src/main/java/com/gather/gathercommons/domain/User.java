@@ -1,7 +1,8 @@
 package com.gather.gathercommons.domain;
 
-public class User {
+import java.io.Serializable;
 
+public class User implements Serializable {
     private Object id;
     private String name;
     private String password;
