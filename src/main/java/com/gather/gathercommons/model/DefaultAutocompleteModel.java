@@ -1,5 +1,6 @@
 package com.gather.gathercommons.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +11,8 @@ import java.util.List;
  * Time: 7:01 PM
  * To change this template use File | Settings | File Templates.
  */
-public class DefaultAutocompleteModel implements IAutocompleteModel {
+public class DefaultAutocompleteModel implements IAutocompleteModel,
+                                                 Serializable {
     private Object selectedObject;
 
     private List<List<Object>> titles;

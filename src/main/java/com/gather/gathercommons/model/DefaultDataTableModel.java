@@ -1,9 +1,11 @@
 package com.gather.gathercommons.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DefaultDataTableModel implements IDataTableModel {
+public class DefaultDataTableModel implements IDataTableModel,
+                                              Serializable {
     private List<Object> selectedRow;
 
     private List<List<Object>> titles;

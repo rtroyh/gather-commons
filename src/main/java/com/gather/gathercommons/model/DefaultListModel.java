@@ -1,5 +1,6 @@
 package com.gather.gathercommons.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +11,8 @@ import java.util.List;
  * Time: 2:12 PM
  * To change this template use File | Settings | File Templates.
  */
-public class DefaultListModel implements IListModel {
+public class DefaultListModel implements IListModel,
+                                         Serializable {
     private List<List<Object>> rows;
 
     @Override

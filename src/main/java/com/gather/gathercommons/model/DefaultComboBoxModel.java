@@ -1,9 +1,11 @@
 package com.gather.gathercommons.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DefaultComboBoxModel implements IComboBoxModel {
+public class DefaultComboBoxModel implements IComboBoxModel,
+                                             Serializable {
 
     private Object selectedOption;
     private List<List<Object>> options;
