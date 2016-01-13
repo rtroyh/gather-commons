@@ -10,7 +10,11 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public interface IListModel {
-    public List<List<Object>> getRows();
+    List<List<Object>> getRows();
 
-    public void setRows(List<List<Object>> rows);
+    void setRows(List<List<Object>> rows);
+
+    List<Object> getSelectedRow();
+
+    void setSelectedRow(List<Object> row);
 }

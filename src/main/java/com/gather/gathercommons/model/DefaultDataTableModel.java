@@ -76,5 +76,4 @@ public class DefaultDataTableModel implements IDataTableModel,
     public void setSelectedRow(List<Object> row) {
         this.selectedRow = row;
     }
-
 }

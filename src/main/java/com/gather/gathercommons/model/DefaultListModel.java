@@ -14,6 +14,7 @@ import java.util.List;
 public class DefaultListModel implements IListModel,
                                          Serializable {
     private List<List<Object>> rows;
+    private List<Object> selectedRow;
 
     @Override
     public List<List<Object>> getRows() {
@@ -27,5 +28,15 @@ public class DefaultListModel implements IListModel,
     @Override
     public void setRows(List<List<Object>> rows) {
         this.rows = rows;
+    }
+
+    @Override
+    public List<Object> getSelectedRow() {
+        return this.selectedRow;
+    }
+
+    @Override
+    public void setSelectedRow(List<Object> selectedRow) {
+        this.selectedRow = selectedRow;
     }
 }
