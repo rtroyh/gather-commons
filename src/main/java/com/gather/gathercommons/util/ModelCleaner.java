@@ -45,6 +45,8 @@ public class ModelCleaner {
                 model.getRows().clear();
                 model.setRows(null);
             }
+
+            model.setSelectedRow(null);
         }
     }
 
