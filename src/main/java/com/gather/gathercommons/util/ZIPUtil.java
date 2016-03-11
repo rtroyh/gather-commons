@@ -16,9 +16,10 @@ import java.util.zip.ZipOutputStream;
  * Time: 11:33
  */
 public class ZIPUtil {
+    //todo: sacar parametro extensionArchivos
     public static ByteArrayOutputStream getZIP(Map<String, ByteArrayOutputStream> byteArrayOutputStreamStringMap,
-                                               String extension) throws
-                                                                 IOException {
+                                               String extensionArchivos) throws
+                                                                         IOException {
         if (byteArrayOutputStreamStringMap != null) {
             byte[] buffer = new byte[1024];
             ByteArrayOutputStream archivosOS = new ByteArrayOutputStream();
@@ -28,7 +29,7 @@ public class ZIPUtil {
                 Map.Entry mapEntry = (Map.Entry) stringByteArrayOutputStreamEntry;
                 String nombreArchivo = mapEntry.getKey().toString();
 
-                ZipEntry ze = new ZipEntry(nombreArchivo + extension);
+                ZipEntry ze = new ZipEntry(nombreArchivo + extensionArchivos);
 
                 InputStream fileIS = new ByteArrayInputStream(((ByteArrayOutputStream) mapEntry.getValue()).toByteArray());
                 archivosZIP.putNextEntry(ze);
