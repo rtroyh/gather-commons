@@ -1,8 +1,6 @@
 package com.gather.gathercommons.util.printer;
 
 import com.gather.gathercommons.util.Validator;
-import com.gather.gathercommons.util.printer.IListUtil;
-import com.gather.gathercommons.util.printer.IMapUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,9 +21,9 @@ public class Printer implements IMapUtil,
                     sb.append(o);
                     sb.append("'");
                 } else if (o instanceof Integer ||
-                        o instanceof Double ||
-                        o instanceof Short ||
-                        o instanceof Long) {
+                           o instanceof Double ||
+                           o instanceof Short ||
+                           o instanceof Long) {
                     sb.append(o);
                 } else if (o instanceof ArrayList) {
                     sb.append(this.convertTOstring(new ArrayList<Object>((ArrayList<?>) o)));
@@ -38,8 +36,17 @@ public class Printer implements IMapUtil,
         return sb.toString();
     }
 
-    public String convertTOstring(List<Object> list, String separator, String delimiter1, String delimiter2) throws
-                                                                                                             RuntimeException {
+    @Override
+    public List<List<Object>> convertTOList(Map<String, Object> map) throws
+                                                                     RuntimeException {
+        return MapUtil.convertTOList(map);
+    }
+
+    public String convertTOstring(List<Object> list,
+                                  String separator,
+                                  String delimiter1,
+                                  String delimiter2) throws
+                                                     RuntimeException {
         StringBuilder sb = new StringBuilder(delimiter1);
 
         if (Validator.validateList(list)) {
