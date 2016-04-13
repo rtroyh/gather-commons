@@ -21,7 +21,7 @@ public class SecureStringUtil {
 
     public static String cellRowToString(List<Object> row,
                                          Integer cellIndex) {
-        if (Validator.validateList(row) && row.size() > cellIndex) {
+        if (Validator.validateList(row) && row.size() > cellIndex && row.get(cellIndex) != null) {
             return row.get(cellIndex).toString().trim();
         }
 
