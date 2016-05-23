@@ -7,8 +7,18 @@ import org.apache.commons.lang3.math.NumberUtils;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public final class Validator {
+    public static Boolean validateMail(String mail) {
+        String emailPattern = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+        Pattern emailCompiledPattern = Pattern.compile(emailPattern);
+        Matcher matcher = emailCompiledPattern.matcher(mail);
+
+        return matcher.matches();
+    }
+
     public static boolean valorEsCero(Object x) {
         boolean valorEsCero = x.equals(0.0) || x.equals(0) || x.equals(0L) || x.equals(0F) || x.equals(new BigDecimal(0));
 
