@@ -5,6 +5,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 
 import javax.sql.DataSource;
+import java.io.Serializable;
 import java.sql.*;
 import java.text.DateFormat;
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ import java.util.List;
  * Date: 10-11-15
  * Time: 10:48
  */
-public class SQLHelper {
+public class SQLHelper implements Serializable {
     private static final Logger LOG = Logger.getLogger(SQLHelper.class);
 
     private DataSource dataSource;
