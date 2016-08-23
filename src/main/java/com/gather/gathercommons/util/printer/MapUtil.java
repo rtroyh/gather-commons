@@ -1,6 +1,7 @@
 package com.gather.gathercommons.util.printer;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -48,5 +49,24 @@ public class MapUtil {
         }
 
         return list;
+    }
+
+    public static <K, V> String toString(Map<K, V> map) {
+        StringBuilder sb = new StringBuilder();
+        Iterator<Map.Entry<K, V>> iterator = map.entrySet().iterator();
+
+        while (iterator.hasNext()) {
+            Map.Entry<K, V> entry = iterator.next();
+            sb.append(entry.getKey());
+            sb.append('=').append('"');
+            sb.append(entry.getValue());
+            sb.append('"');
+
+            if (iterator.hasNext()) {
+                sb.append(',').append(' ');
+            }
+        }
+
+        return sb.toString();
     }
 }
