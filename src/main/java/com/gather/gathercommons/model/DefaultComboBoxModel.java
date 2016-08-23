@@ -6,7 +6,6 @@ import java.util.List;
 
 public class DefaultComboBoxModel implements IComboBoxModel,
                                              Serializable {
-
     private Object selectedOption;
     private List<List<Object>> options;
 
@@ -33,5 +32,4 @@ public class DefaultComboBoxModel implements IComboBoxModel,
     public void setSelectedOption(Object option) {
         this.selectedOption = option;
     }
-
 }
