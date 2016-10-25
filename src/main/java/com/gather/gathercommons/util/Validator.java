@@ -1,6 +1,7 @@
 package com.gather.gathercommons.util;
 
 import com.gather.gathercommons.model.IDataTableModel;
+import com.gather.gathercommons.model.IListModel;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 
@@ -49,6 +50,14 @@ public final class Validator {
                     return true;
                 }
             }
+        }
+
+        return false;
+    }
+
+    public static Boolean isNotEmpty(IListModel o) {
+        if (o != null) {
+            return Validator.validateList(o.getRows());
         }
 
         return false;
