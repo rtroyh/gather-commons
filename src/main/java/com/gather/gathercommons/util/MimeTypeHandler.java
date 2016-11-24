@@ -17,6 +17,8 @@ public class MimeTypeHandler {
             return "image/jpeg";
         } else if (ext.trim().indexOf("jpeg") > 0) {
             return "image/jpeg";
+        } else if (ext.trim().indexOf("png") > 0) {
+            return "image/png";
         } else if (ext.trim().indexOf("ppt") > 0) {
             return "application/powerpoint";
         } else {
