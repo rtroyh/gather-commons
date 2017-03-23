@@ -34,6 +34,8 @@ public class SchemaValidatorTest {
     @Test(dataProvider = "validos")
     public void testValidos(Object o1,
                             Object o2) {
+        LOG.info("INICIO");
+
         URL xml = getClass().getClassLoader().getResource(o1.toString());
 
         String[] schema = (String[]) o2;
