@@ -1,4 +1,4 @@
-package com.gather.gathercommons.util;
+package com.gather.gathercommons.zip;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -26,7 +26,7 @@ public class ZIPUtil {
             ZipOutputStream archivosZIP = new ZipOutputStream(archivosOS);
 
             for (Map.Entry<String, ByteArrayOutputStream> stringByteArrayOutputStreamEntry : byteArrayOutputStreamStringMap.entrySet()) {
-                Map.Entry mapEntry = (Map.Entry) stringByteArrayOutputStreamEntry;
+                Map.Entry mapEntry = stringByteArrayOutputStreamEntry;
                 String nombreArchivo = mapEntry.getKey().toString();
 
                 ZipEntry ze = new ZipEntry(nombreArchivo + extensionArchivos);
