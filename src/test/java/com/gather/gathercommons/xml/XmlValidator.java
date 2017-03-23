@@ -10,6 +10,7 @@ import javax.xml.validation.SchemaFactory;
 import javax.xml.validation.Validator;
 import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
@@ -31,8 +32,8 @@ public class XmlValidator {
      * @param xsdFilesPathsAndNames XSDs against which to validate the XML;
      *                              should not be null or empty.
      */
-    public static void validateXmlAgainstXsds(final String xmlFilePathAndName,
-                                              final String[] xsdFilesPathsAndNames) {
+    private void validateXmlAgainstXsds(final String xmlFilePathAndName,
+                                        final String[] xsdFilesPathsAndNames) {
         if (xmlFilePathAndName == null || xmlFilePathAndName.isEmpty()) {
             LOG.info("ERROR: Path/name of XML to be validated cannot be null.");
             return;
@@ -49,8 +50,10 @@ public class XmlValidator {
             final Schema schema = schemaFactory.newSchema(xsdSources);
             final Validator validator = schema.newValidator();
             LOG.info("Validating " + xmlFilePathAndName + " against XSDs " + Arrays.toString(xsdFilesPathsAndNames) + "...");
-            validator.validate(new StreamSource(new File(xmlFilePathAndName)));
-        } catch (IOException | SAXException exception) {
+
+
+            validator.validate(new StreamSource(new File(getClass().getClassLoader().getResource(xmlFilePathAndName).toURI())));
+        } catch (IOException | SAXException | URISyntaxException exception) {
             LOG.info("ERROR: Unable to validate " + xmlFilePathAndName + " against XSDs " + Arrays.toString(xsdFilesPathsAndNames)
                      + " - " + exception);
         }
@@ -70,11 +73,16 @@ public class XmlValidator {
      *                      of XSD files.
      * @return StreamSource instances representing XSDs.
      */
-    private static StreamSource[] generateStreamSourcesFromXsdPathsJdk8(final String[] xsdFilesPaths) {
+    private StreamSource[] generateStreamSourcesFromXsdPathsJdk8(final String[] xsdFilesPaths) {
+        for (int x = 0; x < xsdFilesPaths.length; x++) {
+            xsdFilesPaths[x] = getClass().getClassLoader().getResource(xsdFilesPaths[x]).getPath();
+        }
+
         return Arrays.stream(xsdFilesPaths)
                      .map(StreamSource::new)
                      .collect(Collectors.toList())
                      .toArray(new StreamSource[xsdFilesPaths.length]);
+
     }
 
     /**
@@ -89,8 +97,10 @@ public class XmlValidator {
         LOG.info("\tOrder of XSDs can be significant (place XSDs that are");
         LOG.info("\tdependent on other XSDs after those they depend on)");
 
+        XmlValidator xmlValidator = new XmlValidator();
+
         final String[] schemas = {"xml/fatca/oecdtypes_v4.2.xsd", "xml/fatca/isofatcatypes_v1.1.xsd", "xml/fatca/stffatcatypes_v2.0.xsd", "xml/fatca/FatcaXML_v2.0.xsd"};
-        validateXmlAgainstXsds("xml/fatca/valido.xml",
-                               schemas);
+        xmlValidator.validateXmlAgainstXsds("xml/fatca/invalido.xml",
+                                            schemas);
     }
 }  
