@@ -11,6 +11,7 @@ import javax.xml.validation.SchemaFactory;
 import javax.xml.validation.Validator;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -47,11 +48,20 @@ public class XMLValidator {
                                      IOException {
         LOG.info("INICIO VALIDACION");
 
+        this.isValid(xmlFile.openStream());
+    }
+
+    public void isValid(InputStream xmlFile) throws
+                                             URISyntaxException,
+                                             SAXException,
+                                             IOException {
+        LOG.info("INICIO VALIDACION");
+
         SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
         Schema schema = getSchema(factory);
         Validator validator = schema.newValidator();
 
-        validator.validate(new StreamSource(new File(xmlFile.toURI())));
+        validator.validate(new StreamSource(xmlFile));
     }
 
     private Schema getSchema(SchemaFactory factory) throws
