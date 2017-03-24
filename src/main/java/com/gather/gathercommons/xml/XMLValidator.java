@@ -24,8 +24,8 @@ import java.util.List;
  * Time: 12:33
  * ES IMPORTANTE EL ORDEN EN QUE SE CARGAN LOS SCHEMAS: LOS ESQUEMAS QUE DEPENDEN DE OTROS DEBEN SER CARGADOS DESPUES DE LO QUE DEPENDEN.
  */
-public class SchemaValidator {
-    private static final Logger LOG = Logger.getLogger(SchemaValidator.class);
+public class XMLValidator {
+    private static final Logger LOG = Logger.getLogger(XMLValidator.class);
 
     private List<URL> schemas;
 
