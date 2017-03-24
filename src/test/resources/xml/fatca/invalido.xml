@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ftc:FATCA_OECD xmlns:iso="urn:oecd:ties:isofatcatypes:v1" xmlns:ftc="urn:oecd:ties:fatca:v2"
-                xmlns:sfa="urn:oecd:ties:stffatcatypes:v2" xmlns:stf="urn:oecd:ties:stf:v4"
+<ftc:FATCA_OECD xmlns:ftc="urn:oecd:ties:fatca:v2"
+                xmlns:sfa="urn:oecd:ties:stffatcatypes:v2"
                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                 xsi:schemaLocation="urn:oecd:ties:fatca:v2" version="2.0">
     <ftc:MessageSpec>
@@ -10,7 +10,7 @@
         <sfa:MessageType>FATCA</sfa:MessageType>
         <sfa:Warning>Warning Text goes here</sfa:Warning>
         <sfa:Contact>Contact Text goes here</sfa:Contact>
-        <sfa:MessageRefId>a1aa421f-38g0-4e01-8y53-25b465f6fe9a</sfa:MessageRefId>eRefId>-->
+        <sfa:MessageRefId>a1aa421f-38g0-4e01-8y53-25b465f6fe9a</sfa:MessageRefId>
         <sfa:ReportingPeriod>2016-12-31Z</sfa:ReportingPeriod>
         <sfa:Timestamp>2017-01-20T09:39:23Z</sfa:Timestamp>
     </ftc:MessageSpec>

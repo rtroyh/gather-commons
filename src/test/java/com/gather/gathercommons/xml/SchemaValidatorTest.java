@@ -28,7 +28,7 @@ public class SchemaValidatorTest {
     @DataProvider
     public Object[][] validos() {
         return new Object[][]{
-                {"xml/fatca/valido.xml", new String[]{"xml/fatca/oecdtypes_v4.2.xsd", "xml/fatca/isofatcatypes_v1.1.xsd", "xml/fatca/stffatcatypes_v2.0.xsd", "xml/fatca/FatcaXML_v2.0.xsd"}}};
+                {"xml/fatca/invalido.xml", new String[]{"xml/fatca/oecdtypes_v4.2.xsd", "xml/fatca/isofatcatypes_v1.1.xsd", "xml/fatca/stffatcatypes_v2.0.xsd", "xml/fatca/FatcaXML_v2.0.xsd"}}};
     }
 
     @Test(dataProvider = "validos")
@@ -43,7 +43,7 @@ public class SchemaValidatorTest {
             schemaValidator.addSchema(getClass().getClassLoader().getResource(s));
         }
 
-        Assert.assertEquals(java.util.Optional.of(true),
+        Assert.assertEquals(true,
                             schemaValidator.isValid(xml));
     }
 }
