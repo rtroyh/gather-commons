@@ -12,9 +12,7 @@ import java.util.List;
 public class SecureValue {
     public static Boolean objectToBoolean(Object o) {
         if (o != null) {
-            if (o instanceof String && o.toString().trim().equals("1")) {
-                return true;
-            } else if (o instanceof Number && o.toString().trim().equals(1)) {
+            if (o.toString().trim().equals("1")) {
                 return true;
             }
         }
