@@ -13,7 +13,7 @@ public class SecureValue {
     public static Boolean objectToBoolean(Object o) {
         if (o != null) {
             if (o.toString().trim().equals("1")) {
-                return true;
+                return Boolean.TRUE;
             }
         }
 
