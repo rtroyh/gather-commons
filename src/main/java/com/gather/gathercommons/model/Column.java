@@ -8,8 +8,11 @@ package com.gather.gathercommons.model;
  * Time: 11:24
  */
 public class Column {
+    private DataType dataType;
     private Boolean isVisible;
-    private String title;
+    private Boolean showZeros;
+
+    private String name;
     private Integer decimalPlaces;
 
 

@@ -6,13 +6,21 @@ import java.util.List;
  * Created with IntelliJ IDEA.
  * $ Project: gather-commons
  * User: rodrigotroy
- * Date: 11-04-16
- * Time: 15:45
- *
- * @deprecated use {@see #com.gather.gathercommons.util.SecureValue} instead.
+ * Date: 4/5/17
+ * Time: 18:20
  */
-@Deprecated
-public class SecureStringUtil {
+public class SecureValue {
+    public static Boolean objectToBoolean(Object o) {
+        if (o != null) {
+            if (o instanceof String && o.toString().trim().equals("1")) {
+                return true;
+            } else if (o instanceof Number && o.toString().trim().equals(1)) {
+                return true;
+            }
+        }
+
+        return Boolean.FALSE;
+    }
 
     public static String objectToString(Object o) {
         if (o != null) {
