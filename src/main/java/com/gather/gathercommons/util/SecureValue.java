@@ -30,6 +30,15 @@ public class SecureValue {
         return "";
     }
 
+    public static Boolean cellRowToBoolean(List<Object> row,
+                                           Integer cellIndex) {
+        if (Validator.validateList(row) && row.size() > cellIndex && row.get(cellIndex) != null) {
+            return SecureValue.objectToBoolean(row.get(cellIndex));
+        }
+
+        return Boolean.FALSE;
+    }
+
     public static String cellRowToString(List<Object> row,
                                          Integer cellIndex) {
         if (Validator.validateList(row) && row.size() > cellIndex && row.get(cellIndex) != null) {
