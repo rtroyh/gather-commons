@@ -1,6 +1,7 @@
 package com.gather.gathercommons.xml;
 
 import org.apache.log4j.Logger;
+import org.xml.sax.ErrorHandler;
 import org.xml.sax.SAXException;
 
 import javax.xml.XMLConstants;
@@ -29,14 +30,23 @@ public class XMLValidator {
     private static final Logger LOG = Logger.getLogger(XMLValidator.class);
 
     private List<URL> schemas;
+    private ErrorHandler errorHandler;
 
     public void addSchema(URL schema) {
         this.getSchemas().add(schema);
     }
 
+    public void setErrorHandler(ErrorHandler errorHandler) {
+        this.errorHandler = errorHandler;
+    }
+
+    public ErrorHandler getErrorHandler() {
+        return errorHandler;
+    }
+
     private List<URL> getSchemas() {
         if (schemas == null) {
-            schemas = new ArrayList();
+            schemas = new ArrayList<>();
         }
 
         return schemas;
@@ -58,8 +68,13 @@ public class XMLValidator {
         LOG.info("INICIO VALIDACION");
 
         SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-        Schema schema = getSchema(factory);
+
+        Schema schema = this.getSchema(factory);
         Validator validator = schema.newValidator();
+
+        if (this.errorHandler != null) {
+            validator.setErrorHandler(this.errorHandler);
+        }
 
         validator.validate(new StreamSource(xmlFile));
     }
@@ -73,6 +88,8 @@ public class XMLValidator {
             sources.add(new StreamSource(new File(url.toURI())));
         }
 
-        return factory.newSchema(sources.toArray(new Source[0]));
+        Schema schema = factory.newSchema(sources.toArray(new Source[0]));
+
+        return schema;
     }
 }

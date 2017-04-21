@@ -48,7 +48,7 @@
             </ftc:Intermediary>
             <ftc:AccountReport>
                 <ftc:DocSpec>
-                    <ftc:DocTypeIndic>FATCA11</ftc:DocTypeIndic>
+                    <ftc:DocTypeIndic>FATCA1111</ftc:DocTypeIndic>
                     <ftc:DocRefId>2IW3WK.00000.LE.152.DR1-4</ftc:DocRefId>
                 </ftc:DocSpec>
                 <ftc:AccountNumber>ABCD1234</ftc:AccountNumber>
@@ -107,7 +107,7 @@
             </ftc:AccountReport>
             <ftc:PoolReport>
                 <ftc:DocSpec>
-                    <ftc:DocTypeIndic>FATCA11</ftc:DocTypeIndic>
+                    <ftc:DocTypeIndic>FATCA112222</ftc:DocTypeIndic>
                     <ftc:DocRefId>2IW3WK.00000.LE.152.DR1-5</ftc:DocRefId>
                 </ftc:DocSpec>
                 <ftc:AccountCount>200</ftc:AccountCount>
