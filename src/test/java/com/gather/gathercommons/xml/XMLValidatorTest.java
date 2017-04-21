@@ -93,10 +93,7 @@ public class XMLValidatorTest {
 
     @Test(dataProvider = "invalidos")
     public void testInvalidosConErrorHandler(Object o1,
-                                             Object o2) throws
-                                                        SAXException,
-                                                        IOException,
-                                                        URISyntaxException {
+                                             Object o2) {
         LOG.info("INICIO TEST XMLS INVALIDOS USANDO ERROR HANDLER");
 
         xmlvalidator.setErrorHandler(new GatherErrorHandler());
@@ -112,8 +109,6 @@ public class XMLValidatorTest {
             xmlvalidator.isValid(xml);
         } catch (URISyntaxException | IOException | SAXException e) {
             LOG.error(e.getMessage());
-
-            throw e;
         }
 
         GatherErrorHandler errorHandler = (GatherErrorHandler) xmlvalidator.getErrorHandler();
