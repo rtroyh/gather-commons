@@ -121,7 +121,7 @@ public final class Validator {
             if (o instanceof Number) {
                 return true;
             } else if (o instanceof String) {
-                return NumberUtils.isNumber(o.toString());
+                return NumberUtils.isCreatable(o.toString());
             }
         }
 
