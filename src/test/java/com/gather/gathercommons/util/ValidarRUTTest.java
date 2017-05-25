@@ -29,6 +29,7 @@ public class ValidarRUTTest {
                 {"10", false},
                 {"lala", false},
                 {"13999--2", false},
+                {"", false},
                 {"76216210-5", true}};
     }
 
