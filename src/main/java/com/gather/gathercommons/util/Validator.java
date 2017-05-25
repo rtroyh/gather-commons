@@ -180,4 +180,13 @@ public final class Validator {
 
         return false;
     }
+
+    public static Boolean validateRUT(String rut) {
+        if (Validator.validateString(rut)) {
+            return Pattern.matches("^0*(\\d{1,3}(\\.?\\d{3})*)\\-([\\dkK])$",
+                                   rut);
+        }
+
+        return false;
+    }
 }
