@@ -22,8 +22,8 @@ import java.util.List;
 public class SQLHelper implements Serializable {
     private static final Logger LOG = Logger.getLogger(SQLHelper.class);
 
-    private DataSource dataSource;
-    private Connection connection;
+    private transient DataSource dataSource;
+    private transient Connection connection;
 
     public SQLHelper(DataSource dataSource) {
         this.dataSource = dataSource;
@@ -122,20 +122,13 @@ public class SQLHelper implements Serializable {
 
             boolean haveRS = statement.execute();
 
-            List<List<Object>> resultset = new ArrayList<List<Object>>();
+            List<List<Object>> resultset = new ArrayList<>();
 
             while (haveRS) {
                 final ResultSet rs = statement.getResultSet();
 
-                while (rs.next()) {
-                    List<Object> row = new ArrayList<Object>();
-
-                    for (int cIndex = 0; cIndex < rs.getMetaData().getColumnCount(); cIndex++) {
-                        row.add(rs.getObject(cIndex + 1));
-                    }
-
-                    resultset.add(row);
-                }
+                addResultSet(resultset,
+                             rs);
 
                 haveRS = statement.getMoreResults();
             }
@@ -147,6 +140,20 @@ public class SQLHelper implements Serializable {
             if (statement != null) {
                 statement.close();
             }
+        }
+    }
+
+    private void addResultSet(List<List<Object>> resultset,
+                              ResultSet rs) throws
+                                            SQLException {
+        while (rs.next()) {
+            List<Object> row = new ArrayList<>();
+
+            for (int cIndex = 0; cIndex < rs.getMetaData().getColumnCount(); cIndex++) {
+                row.add(rs.getObject(cIndex + 1));
+            }
+
+            resultset.add(row);
         }
     }
 
@@ -230,37 +237,41 @@ public class SQLHelper implements Serializable {
 
             boolean haveRS = statement.execute();
 
-            List<List<List<Object>>> result = new ArrayList<List<List<Object>>>();
+            List<List<List<Object>>> result = new ArrayList<>();
 
-            while (haveRS) {
-                List<List<Object>> resultset = new ArrayList<List<Object>>();
+            int updateCount = 0;
 
-                final ResultSet rs = statement.getResultSet();
+            while (haveRS || updateCount != -1) {
+                List<List<Object>> resultset = new ArrayList<>();
 
-                while (rs.next()) {
-                    List<Object> row = new ArrayList<Object>();
+                if (haveRS) {
+                    final ResultSet rs = statement.getResultSet();
 
-                    for (int cIndex = 0; cIndex < rs.getMetaData().getColumnCount(); cIndex++) {
-                        row.add(rs.getObject(cIndex + 1));
+                    this.addResultSet(resultset,
+                                      rs);
+
+                    result.add(resultset);
+                } else {
+                    updateCount = statement.getUpdateCount();
+
+                    if (updateCount >= 0) {
+                        LOG.info("DDL or update data displayed here.");
+                    } else {
+                        LOG.info("No more results to process.");
                     }
-
-                    resultset.add(row);
                 }
-
-                result.add(resultset);
 
                 haveRS = statement.getMoreResults();
             }
 
             if (haveOutputParameters) {
                 while (!haveRS) {
-                    LOG.debug("ESPERANDO AL SP WEON...");
+                    LOG.debug("ESPERANDO AL SP...");
                     haveRS = statement.getMoreResults();
                 }
-                haveRS = statement.getMoreResults();
 
-                List<List<Object>> resultset = new ArrayList<List<Object>>();
-                List<Object> row = new ArrayList<Object>();
+                List<List<Object>> resultset = new ArrayList<>();
+                List<Object> row = new ArrayList<>();
 
                 for (int x = 0; x < parameters.length; x++) {
                     if (inORout[x] == 0) {
