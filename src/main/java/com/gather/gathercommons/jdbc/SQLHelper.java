@@ -255,9 +255,9 @@ public class SQLHelper implements Serializable {
                     updateCount = statement.getUpdateCount();
 
                     if (updateCount >= 0) {
-                        LOG.info("DDL or update data displayed here.");
+                        LOG.info("CONTADOR EN: " + updateCount);
                     } else {
-                        LOG.info("No more results to process.");
+                        LOG.info("NO HAY MAS REGISTROS.");
                     }
                 }
 
