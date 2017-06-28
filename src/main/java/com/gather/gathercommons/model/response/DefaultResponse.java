@@ -1,5 +1,7 @@
 package com.gather.gathercommons.model.response;
 
+import com.gather.gathercommons.model.DefaultListModel;
+import com.gather.gathercommons.model.IDataTableModel;
 import com.gather.gathercommons.model.IListModel;
 import com.gather.gathercommons.util.Validator;
 
@@ -15,6 +17,12 @@ public class DefaultResponse implements IResponse {
 
     public DefaultResponse(IListModel model) {
         this.model = model;
+    }
+
+    public DefaultResponse(IDataTableModel model) {
+        IListModel model1 = new DefaultListModel();
+        model1.setRows(model.getTitles());
+        this.model = model1;
     }
 
     public String getMessage() {
