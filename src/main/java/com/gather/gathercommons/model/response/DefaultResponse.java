@@ -20,9 +20,7 @@ public class DefaultResponse implements IResponse {
     }
 
     public DefaultResponse(IDataTableModel model) {
-        IListModel model1 = new DefaultListModel();
-        model1.setRows(model.getTitles());
-        this.model = model1;
+        this.model = new DefaultListModel(model.getTitles());
     }
 
     public String getMessage() {

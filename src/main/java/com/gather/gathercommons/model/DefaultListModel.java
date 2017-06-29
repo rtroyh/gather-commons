@@ -16,6 +16,13 @@ public class DefaultListModel implements IListModel,
     private List<List<Object>> rows;
     private List<Object> selectedRow;
 
+    public DefaultListModel() {
+    }
+
+    public DefaultListModel(List<List<Object>> rows) {
+        this.rows = rows;
+    }
+
     @Override
     public List<List<Object>> getRows() {
         if (this.rows == null) {
