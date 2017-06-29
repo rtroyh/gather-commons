@@ -361,7 +361,7 @@ public class SQLHelper implements Serializable {
     private void crearConexion() throws
                                  SQLException {
         if (connection == null || connection.isClosed()) {
-            LOG.info("NUEVA CONEXION");
+            LOG.debug("NUEVA CONEXION");
             this.connection = dataSource.getConnection();
         }
     }
@@ -369,7 +369,7 @@ public class SQLHelper implements Serializable {
     public void closeConnection() throws
                                   SQLException {
         if (connection != null) {
-            LOG.info("CERRANDO CONEXION");
+            LOG.debug("CERRANDO CONEXION");
             connection.close();
         }
     }
