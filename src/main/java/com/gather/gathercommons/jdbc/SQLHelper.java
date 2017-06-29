@@ -157,12 +157,34 @@ public class SQLHelper implements Serializable {
         }
     }
 
+    private String printParameters(Object[] parameters) {
+        if (parameters != null && parameters.length > 0) {
+            StringBuilder stringBuilder = new StringBuilder();
+
+            for (Object parameter : parameters) {
+                if (parameter instanceof String) {
+                    stringBuilder.append("'");
+                    stringBuilder.append(parameter);
+                    stringBuilder.append("'");
+                } else {
+                    stringBuilder.append(parameter);
+                }
+                stringBuilder.append(",");
+            }
+
+            return stringBuilder.substring(0,
+                                           stringBuilder.toString().length() - 1);
+        }
+
+        return "";
+    }
+
     public List<List<List<Object>>> call(String sentence,
                                          Object[] parameters,
                                          int[] parametersType,
                                          int[] outputParameter) throws
                                                                 SQLException {
-        LOG.info("INICIO LLAMADO SP: " + sentence);
+        LOG.info("INICIO LLAMADO SP: " + sentence + "(" + this.printParameters(parameters) + ")");
 
         return this.executeCall(sentence,
                                 parameters,
