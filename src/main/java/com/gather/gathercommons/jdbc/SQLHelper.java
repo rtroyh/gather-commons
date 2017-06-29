@@ -203,7 +203,6 @@ public class SQLHelper implements Serializable {
 
         StringBuilder realSentence = buildSPCall(sentence,
                                                  parameters);
-        LOG.info(realSentence.toString());
 
         boolean haveOutputParameters = false;
 
@@ -277,9 +276,9 @@ public class SQLHelper implements Serializable {
                     updateCount = statement.getUpdateCount();
 
                     if (updateCount >= 0) {
-                        LOG.info("CONTADOR EN: " + updateCount);
+                        LOG.debug("CONTADOR EN: " + updateCount);
                     } else {
-                        LOG.info("NO HAY MAS REGISTROS.");
+                        LOG.debug("NO HAY MAS REGISTROS.");
                     }
                 }
 
