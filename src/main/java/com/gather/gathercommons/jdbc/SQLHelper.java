@@ -182,29 +182,32 @@ public class SQLHelper implements Serializable {
     public List<List<List<Object>>> call(String sentence,
                                          Object[] parameters,
                                          int[] parametersType,
-                                         int[] outputParameter) throws
-                                                                SQLException {
+                                         int[] outputParameter,
+                                         Boolean waitForOutputParameters) throws
+                                                                          SQLException {
         LOG.debug("INICIO LLAMADO SP: " + sentence + "(" + this.printParameters(parameters) + ")");
 
         return this.executeCall(sentence,
                                 parameters,
                                 parametersType,
-                                outputParameter);
+                                outputParameter,
+                                waitForOutputParameters);
     }
 
     private List<List<List<Object>>> executeCall(String sentence,
                                                  Object[] parameters,
                                                  int[] parametersType,
-                                                 int[] inORout) throws
-                                                                SQLException {
-        crearConexion();
+                                                 int[] inORout,
+                                                 Boolean waitForOutputParameters) throws
+                                                                                  SQLException {
+        this.crearConexion();
 
         CallableStatement statement = null;
 
         StringBuilder realSentence = buildSPCall(sentence,
                                                  parameters);
 
-        boolean haveOutputParameters = false;
+        Boolean haveOutputParameters = false;
 
         try {
             statement = connection.prepareCall(realSentence.toString());
@@ -261,7 +264,7 @@ public class SQLHelper implements Serializable {
                 }
             }
 
-            boolean haveRS = statement.execute();
+            Boolean haveRS = statement.execute();
 
             List<List<List<Object>>> result = new ArrayList<>();
 
@@ -271,7 +274,7 @@ public class SQLHelper implements Serializable {
                 List<List<Object>> resultset = new ArrayList<>();
 
                 if (haveRS) {
-                    final ResultSet rs = statement.getResultSet();
+                    ResultSet rs = statement.getResultSet();
 
                     this.addResultSet(resultset,
                                       rs);
@@ -290,7 +293,7 @@ public class SQLHelper implements Serializable {
                 haveRS = statement.getMoreResults();
             }
 
-            if (haveOutputParameters) {
+            if (haveOutputParameters && waitForOutputParameters) {
                 while (!haveRS) {
                     LOG.debug("ESPERANDO AL SP...");
                     haveRS = statement.getMoreResults();
@@ -359,8 +362,6 @@ public class SQLHelper implements Serializable {
             if (statement != null) {
                 statement.close();
             }
-
-            this.closeConnection();
         }
 
         return result;
@@ -374,8 +375,8 @@ public class SQLHelper implements Serializable {
         }
     }
 
-    private void closeConnection() throws
-                                   SQLException {
+    public void closeConnection() throws
+                                  SQLException {
         if (connection != null) {
             LOG.debug("CERRANDO CONEXION");
             connection.close();
