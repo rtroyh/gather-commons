@@ -31,35 +31,35 @@ public class SQLHelper implements Serializable {
 
     public int createTable(String sentence) throws
                                             SQLException {
-        LOG.info("INICIO CREACION TABLA");
+        LOG.debug("INICIO CREACION TABLA");
 
         return this.executeSQL(sentence);
     }
 
     public int delete(String sentence) throws
                                        SQLException {
-        LOG.info("INICIO DELETE");
+        LOG.debug("INICIO DELETE");
 
         return this.executeSQL(sentence);
     }
 
     public int update(String sentence) throws
                                        SQLException {
-        LOG.info("INICIO UPDATE");
+        LOG.debug("INICIO UPDATE");
 
         return this.executeSQL(sentence);
     }
 
     public int dropTable(String sentence) throws
                                           SQLException {
-        LOG.info("INICIO DROP TABLE");
+        LOG.debug("INICIO DROP TABLE");
 
         return this.executeSQL(sentence);
     }
 
     public int insert(String sentence) throws
                                        SQLException {
-        LOG.info("INICIO INSERT");
+        LOG.debug("INICIO INSERT");
 
         return this.executeSQL(sentence);
     }
@@ -157,7 +157,7 @@ public class SQLHelper implements Serializable {
         }
     }
 
-    private String printParameters(Object[] parameters) {
+    public String printParameters(Object[] parameters) {
         if (parameters != null && parameters.length > 0) {
             StringBuilder stringBuilder = new StringBuilder();
 
@@ -184,7 +184,7 @@ public class SQLHelper implements Serializable {
                                          int[] parametersType,
                                          int[] outputParameter) throws
                                                                 SQLException {
-        LOG.info("INICIO LLAMADO SP: " + sentence + "(" + this.printParameters(parameters) + ")");
+        LOG.debug("INICIO LLAMADO SP: " + sentence + "(" + this.printParameters(parameters) + ")");
 
         return this.executeCall(sentence,
                                 parameters,
@@ -296,7 +296,7 @@ public class SQLHelper implements Serializable {
 
                 for (int x = 0; x < parameters.length; x++) {
                     if (inORout[x] == 0) {
-                        LOG.info("RECUPERANDO PARAMETRO DE SALIDA DESDE LA POSICION: " + x);
+                        LOG.debug("RECUPERANDO PARAMETRO DE SALIDA DESDE LA POSICION: " + x);
                         row.add(statement.getObject(x + 1));
                     }
                 }
@@ -328,6 +328,7 @@ public class SQLHelper implements Serializable {
                 }
             }
         }
+
         realSentence.append(")}");
 
         return realSentence;
@@ -335,7 +336,7 @@ public class SQLHelper implements Serializable {
 
     private int executeSQL(String sentence) throws
                                             SQLException {
-        int result = 0;
+        int result;
 
         crearConexion();
 
@@ -348,7 +349,7 @@ public class SQLHelper implements Serializable {
 
             result = statement.executeUpdate();
 
-            LOG.info("Resultado " + result);
+            LOG.debug("Resultado " + result);
         } finally {
             if (statement != null) {
                 statement.close();
