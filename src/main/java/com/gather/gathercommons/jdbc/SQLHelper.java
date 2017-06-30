@@ -252,6 +252,11 @@ public class SQLHelper implements Serializable {
                         haveOutputParameters = true;
                         statement.registerOutParameter(x + 1,
                                                        parametersType[x]);
+                        if (parameters[x] != null) {
+                            statement.setObject(x + 1,
+                                                parameters[x].toString().trim(),
+                                                parametersType[x]);
+                        }
                     }
                 }
             }
@@ -354,6 +359,8 @@ public class SQLHelper implements Serializable {
             if (statement != null) {
                 statement.close();
             }
+
+            this.closeConnection();
         }
 
         return result;
@@ -367,8 +374,8 @@ public class SQLHelper implements Serializable {
         }
     }
 
-    public void closeConnection() throws
-                                  SQLException {
+    private void closeConnection() throws
+                                   SQLException {
         if (connection != null) {
             LOG.debug("CERRANDO CONEXION");
             connection.close();
