@@ -184,7 +184,8 @@ public class SQLHelper implements Serializable {
                                          int[] parametersType,
                                          int[] outputParameter,
                                          Boolean waitForOutputParameters) throws
-                                                                          SQLException {
+                                                                          SQLException,
+                                                                          InterruptedException {
         LOG.debug("INICIO LLAMADO SP: " + sentence + "(" + this.printParameters(parameters) + ")");
 
         return this.executeCall(sentence,
@@ -199,7 +200,8 @@ public class SQLHelper implements Serializable {
                                                  int[] parametersType,
                                                  int[] inORout,
                                                  Boolean waitForOutputParameters) throws
-                                                                                  SQLException {
+                                                                                  SQLException,
+                                                                                  InterruptedException {
         this.crearConexion();
 
         CallableStatement statement = null;
@@ -296,6 +298,7 @@ public class SQLHelper implements Serializable {
             if (haveOutputParameters && waitForOutputParameters) {
                 while (!haveRS) {
                     LOG.debug("ESPERANDO AL SP...");
+                    Thread.sleep(1000);
                     haveRS = statement.getMoreResults();
                 }
 
