@@ -8,5 +8,5 @@ package com.gather.gathercommons.model.response;
  * Time: 15:49
  */
 public enum Outcome {
-    OK, ERROR, NONE
+    OK, ERROR, WARN, NONE
 }
