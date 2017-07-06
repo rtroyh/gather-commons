@@ -9,8 +9,7 @@ import java.util.Map;
 public class Printer implements IMapUtil,
                                 IListUtil {
 
-    public String convertTOstring(Map<String, Object> map) throws
-                                                           RuntimeException {
+    public String convertTOstring(Map<String, Object> map) {
         StringBuilder sb = new StringBuilder();
 
         if (map != null) {
@@ -26,7 +25,7 @@ public class Printer implements IMapUtil,
                            o instanceof Long) {
                     sb.append(o);
                 } else if (o instanceof ArrayList) {
-                    sb.append(this.convertTOstring(new ArrayList<Object>((ArrayList<?>) o)));
+                    sb.append(this.convertTOstring(new ArrayList<>((ArrayList<?>) o)));
                 }
 
                 sb.append(",");
@@ -37,16 +36,14 @@ public class Printer implements IMapUtil,
     }
 
     @Override
-    public List<List<Object>> convertTOList(Map<String, Object> map) throws
-                                                                     RuntimeException {
+    public List<List<Object>> convertTOList(Map<String, Object> map) {
         return MapUtil.convertTOList(map);
     }
 
     public String convertTOstring(List<Object> list,
                                   String separator,
                                   String delimiter1,
-                                  String delimiter2) throws
-                                                     RuntimeException {
+                                  String delimiter2) {
         StringBuilder sb = new StringBuilder(delimiter1);
 
         if (Validator.validateList(list)) {
@@ -73,16 +70,14 @@ public class Printer implements IMapUtil,
         return sb.toString();
     }
 
-    public String convertTOstring(List<Object> list) throws
-                                                     RuntimeException {
+    public String convertTOstring(List<Object> list) {
         return this.convertTOstring(list,
                                     ",",
                                     "[",
                                     "]");
     }
 
-    public String convertTOstring(Object[] param) throws
-                                                  RuntimeException {
+    public String convertTOstring(Object[] param) {
         StringBuilder sb = new StringBuilder("[");
 
         if (param != null && param.length > 0) {

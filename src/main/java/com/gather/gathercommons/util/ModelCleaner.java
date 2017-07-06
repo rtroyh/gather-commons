@@ -14,6 +14,9 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public class ModelCleaner {
+    private ModelCleaner() {
+        throw new IllegalStateException("Utility class");
+    }
 
     public static void cleanModel(IDataTableModel model) {
         if (model != null) {

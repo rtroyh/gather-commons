@@ -26,7 +26,7 @@ public class DefaultListModel implements IListModel,
     @Override
     public List<List<Object>> getRows() {
         if (this.rows == null) {
-            this.rows = new ArrayList<List<Object>>();
+            this.rows = new ArrayList<>();
         }
 
         return rows;

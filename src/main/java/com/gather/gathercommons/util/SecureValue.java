@@ -10,6 +10,10 @@ import java.util.List;
  * Time: 18:20
  */
 public class SecureValue {
+    private SecureValue() {
+        throw new IllegalStateException("Utility class");
+    }
+
     public static Boolean objectToBoolean(Object o) {
         if (o != null) {
             if (o.toString().trim().equals("1")) {

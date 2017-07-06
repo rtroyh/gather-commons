@@ -22,7 +22,7 @@ public class DefaultAutocompleteModel implements IAutocompleteModel,
     @Override
     public List<List<Object>> getHeaders() {
         if (this.headers == null) {
-            this.headers = new ArrayList<List<Object>>();
+            this.headers = new ArrayList<>();
         }
 
         return headers;
@@ -31,7 +31,7 @@ public class DefaultAutocompleteModel implements IAutocompleteModel,
     @Override
     public List<List<Object>> getRows() {
         if (this.rows == null) {
-            this.rows = new ArrayList<List<Object>>();
+            this.rows = new ArrayList<>();
         }
 
         return rows;
@@ -40,7 +40,7 @@ public class DefaultAutocompleteModel implements IAutocompleteModel,
     @Override
     public List<List<Object>> getTitles() {
         if (this.titles == null) {
-            this.titles = new ArrayList<List<Object>>();
+            this.titles = new ArrayList<>();
         }
 
         return titles;

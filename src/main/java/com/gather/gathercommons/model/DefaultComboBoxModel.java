@@ -12,7 +12,7 @@ public class DefaultComboBoxModel implements IComboBoxModel,
     @Override
     public List<List<Object>> getOptions() {
         if (this.options == null) {
-            this.options = new ArrayList<List<Object>>();
+            this.options = new ArrayList<>();
         }
 
         return this.options;

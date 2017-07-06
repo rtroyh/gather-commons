@@ -2,29 +2,29 @@ package com.gather.gathercommons.util;
 
 public class Simbolos {
 
-    private static final String grado = "º";
-    private static final String slash = "/";
-    private static final String ene = "ñ";
-    private static final String enne = "Ñ";
-    private static final String abreInterrogacion = "¿";
+    private static final String GRADO = "º";
+    private static final String SLASH = "/";
+    private static final String ENE = "ñ";
+    private static final String ENNE = "Ñ";
+    private static final String ABRE_INTERROGACION = "¿";
 
     public String getGrado() {
-        return grado;
+        return GRADO;
     }
 
     public String getSlash() {
-        return slash;
+        return SLASH;
     }
 
     public String getEne() {
-        return ene;
+        return ENE;
     }
 
     public String getAbreInterrogacion() {
-        return abreInterrogacion;
+        return ABRE_INTERROGACION;
     }
 
     public String getEnne() {
-        return enne;
+        return ENNE;
     }
 }

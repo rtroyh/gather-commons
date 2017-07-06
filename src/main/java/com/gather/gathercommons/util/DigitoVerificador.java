@@ -1,6 +1,9 @@
 package com.gather.gathercommons.util;
 
 public class DigitoVerificador {
+    private DigitoVerificador() {
+        throw new IllegalStateException("Utility class");
+    }
 
     public static String calcular(int rut) {
         int aux = rut;
@@ -12,8 +15,8 @@ public class DigitoVerificador {
         while (aux != 0) {
             digito = aux % 10;
             suma = suma +
-                    factor *
-                            digito;
+                   factor *
+                   digito;
             aux /= 10;
             factor++;
             if (factor == 8) {

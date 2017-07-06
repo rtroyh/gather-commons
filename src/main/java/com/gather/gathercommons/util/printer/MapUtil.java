@@ -6,6 +6,10 @@ import java.util.List;
 import java.util.Map;
 
 public class MapUtil {
+    private MapUtil() {
+        throw new IllegalStateException("Utility class");
+    }
+
     public static String convertTOstring(Map<String, Object> map) {
         if (map != null) {
             StringBuilder sb = new StringBuilder(map.size() * 2);

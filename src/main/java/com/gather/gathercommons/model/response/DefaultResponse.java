@@ -24,24 +24,20 @@ public class DefaultResponse implements IResponse {
     }
 
     public String getMessage() {
-        if (model != null) {
-            if (Validator.validateList(model.getRows()) && Validator.validateList(model.getRows().get(0)) && Validator.validateString(model.getRows().get(0).get(1))) {
-                return model.getRows().get(0).get(1).toString().trim();
-            }
+        if (model != null && Validator.validateList(model.getRows()) && Validator.validateList(model.getRows().get(0)) && Validator.validateString(model.getRows().get(0).get(1))) {
+            return model.getRows().get(0).get(1).toString().trim();
         }
 
         return "";
     }
 
     public Outcome getOutcome() {
-        if (model != null) {
-            if (Validator.validateList(model.getRows()) && Validator.validateList(model.getRows().get(0))) {
-                if (model.getRows().get(0).get(0).equals(0)) {
-                    return Outcome.OK;
-                }
-
-                return Outcome.ERROR;
+        if (model != null && Validator.validateList(model.getRows()) && Validator.validateList(model.getRows().get(0))) {
+            if (model.getRows().get(0).get(0).equals(0)) {
+                return Outcome.OK;
             }
+
+            return Outcome.ERROR;
         }
 
         return Outcome.NONE;

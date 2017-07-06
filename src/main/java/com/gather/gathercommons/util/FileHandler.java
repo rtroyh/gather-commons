@@ -1,18 +1,10 @@
 package com.gather.gathercommons.util;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 
 /**
  * CLASE DE AYUDA PARA MANIPULACION DE ARCHIVOS.
  *
- * @author RTROY
  */
 public class FileHandler {
 
@@ -56,18 +48,30 @@ public class FileHandler {
 
         InputStream in = null;
         OutputStream out = null;
+        FileInputStream fis = null;
+        FileOutputStream fos = null;
 
         try {
-            in = new BufferedInputStream(new FileInputStream(inFile));
-            out = new BufferedOutputStream(new FileOutputStream(outFile));
+            fis = new FileInputStream(inFile);
+            in = new BufferedInputStream(fis);
+            fos = new FileOutputStream(outFile);
+            out = new BufferedOutputStream(fos);
 
             for (int c = in.read(); c != -1; c = in.read()) {
                 out.write(c);
             }
         } finally {
+            if (fis != null) {
+                fis.close();
+            }
             if (in != null) {
                 in.close();
             }
+
+            if (fos != null) {
+                fos.close();
+            }
+
             if (out != null) {
                 out.close();
             }
