@@ -182,6 +182,19 @@ public class SQLHelper implements Serializable {
     public List<List<List<Object>>> call(String sentence,
                                          Object[] parameters,
                                          int[] parametersType,
+                                         int[] outputParameter) throws
+                                                                SQLException,
+                                                                InterruptedException {
+        return this.call(sentence,
+                         parameters,
+                         parametersType,
+                         outputParameter,
+                         false);
+    }
+
+    public List<List<List<Object>>> call(String sentence,
+                                         Object[] parameters,
+                                         int[] parametersType,
                                          int[] outputParameter,
                                          Boolean waitForOutputParameters) throws
                                                                           SQLException,
