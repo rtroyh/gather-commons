@@ -13,7 +13,7 @@ public class Calendar {
     private java.util.Calendar calendar;
 
     private Calendar() {
-        calendar = java.util.Calendar.getInstance();
+        this.calendar = java.util.Calendar.getInstance();
     }
 
     public static Calendar getInstance() {
