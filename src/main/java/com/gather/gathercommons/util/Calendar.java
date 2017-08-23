@@ -20,6 +20,13 @@ public class Calendar {
         return new Calendar();
     }
 
+    public static Calendar getInstance(java.util.Calendar calendar) {
+        final Calendar calendar1 = new Calendar();
+        calendar1.calendar = calendar;
+
+        return calendar1;
+    }
+
     public Calendar addDay(Integer days) {
         this.calendar.add(java.util.Calendar.DAY_OF_MONTH,
                           days);
@@ -37,6 +44,16 @@ public class Calendar {
     public Calendar addYear(Integer years) {
         this.calendar.add(java.util.Calendar.YEAR,
                           years);
+
+        return this;
+    }
+
+    public Calendar setTime(Integer year,
+                            Integer month,
+                            Integer day) {
+        this.calendar.set(year,
+                          month,
+                          day);
 
         return this;
     }
