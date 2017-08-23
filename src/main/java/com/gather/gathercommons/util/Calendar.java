@@ -16,7 +16,7 @@ public class Calendar {
         calendar = java.util.Calendar.getInstance();
     }
 
-    public Calendar getInstance() {
+    public static Calendar getInstance() {
         return new Calendar();
     }
 
