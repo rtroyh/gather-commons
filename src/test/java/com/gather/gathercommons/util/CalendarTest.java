@@ -14,8 +14,6 @@ import java.text.SimpleDateFormat;
  * Time: 12:44
  */
 public class CalendarTest {
-    private Calendar calendar;
-
     @DataProvider
     public Object[][] fechas() {
         java.util.Calendar calendarAdd2Days = java.util.Calendar.getInstance();
