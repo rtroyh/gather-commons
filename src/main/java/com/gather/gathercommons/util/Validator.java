@@ -189,4 +189,8 @@ public final class Validator {
 
         return false;
     }
+
+    public static Boolean validateIListModel(IListModel model) {
+        return model != null && Validator.validateList(model.getRows());
+    }
 }
