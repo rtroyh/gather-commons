@@ -8,8 +8,8 @@ package com.gather.gathercommons.util;
  * Time: 13:23
  */
 public class Base64 {
-    public String encode(String text,
-                         boolean urlSafe) {
+    public static String encode(String text,
+                                boolean urlSafe) {
         java.util.Base64.Encoder encoder;
 
         if (urlSafe) {
@@ -21,8 +21,8 @@ public class Base64 {
         return new String(encoder.encode(text.getBytes()));
     }
 
-    public String encode(byte[] src,
-                         boolean urlSafe) {
+    public static String encode(byte[] src,
+                                boolean urlSafe) {
         java.util.Base64.Encoder encoder;
 
         if (urlSafe) {
@@ -36,8 +36,8 @@ public class Base64 {
         return new String(encode1);
     }
 
-    public String decode(String text,
-                         boolean urlSafe) {
+    public static String decode(String text,
+                                boolean urlSafe) {
         java.util.Base64.Decoder decoder;
 
         if (urlSafe) {
