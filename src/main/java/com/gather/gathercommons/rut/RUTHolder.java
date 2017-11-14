@@ -36,13 +36,12 @@ public class RUTHolder {
         Boolean rutEsValido;
 
         if (Validator.validateRUT(this.rutConDV)) {
-            rutEsValido = StringUtils.isNumeric(rutSinDV);
+            final Boolean rutSinDVEsNumerico = StringUtils.isNumeric(rutSinDV);
+            final Boolean dvEsValido = DigitoVerificador.calcular(Integer.parseInt(rutSinDV)).equals(digitoVerificador);
 
-            if (!DigitoVerificador.calcular(Integer.parseInt(rutSinDV)).equals(digitoVerificador)) {
-                rutEsValido = false;
-            }
+            rutEsValido = rutSinDVEsNumerico && dvEsValido;
         } else {
-            rutEsValido = true;
+            rutEsValido = false;
         }
 
         return rutEsValido;
