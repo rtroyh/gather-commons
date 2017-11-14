@@ -17,9 +17,6 @@ public class RUTHolder {
     private String rutConDV;
     private String digitoVerificador;
 
-    private Boolean origenTieneDV;
-    private Boolean dvEsVerificable;
-
     public RUTHolder(String rutConDV) throws
                                       RUTInvalidoException {
         if (Validator.validateRUT(rutConDV)) {
@@ -30,7 +27,7 @@ public class RUTHolder {
             this.digitoVerificador = rutConDV.substring(rutConDV.indexOf("-") + 1,
                                                         rutConDV.indexOf("-") + 2).toUpperCase();
         } else {
-            throw new RUTInvalidoException("RUT ES INVALIDO");
+            throw new RUTInvalidoException("FORMATO DEL RUT ES INVALIDO");
         }
     }
 
@@ -55,26 +52,14 @@ public class RUTHolder {
     }
 
     public String getRutSinDV() {
-        if (rutSinDV == null) {
-
-        }
-
         return rutSinDV;
     }
 
     public String getRutConDV() {
-        if (rutConDV == null) {
-
-        }
-
         return rutConDV;
     }
 
     public String getDigitoVerificador() {
-        if (digitoVerificador == null) {
-
-        }
-
         return digitoVerificador;
     }
 }
