@@ -21,19 +21,8 @@ public class Base64 {
         return new String(encoder.encode(text.getBytes()));
     }
 
-    public static String encode(byte[] src,
-                                boolean urlSafe) {
-        java.util.Base64.Encoder encoder;
-
-        if (urlSafe) {
-            encoder = java.util.Base64.getUrlEncoder();
-        } else {
-            encoder = java.util.Base64.getEncoder();
-        }
-
-        final byte[] encode1 = encoder.encode(src);
-
-        return new String(encode1);
+    public static String encodeByteToString(byte[] src) {
+        return org.apache.commons.codec.binary.Base64.encodeBase64String(src);
     }
 
     public static String decode(String text,
@@ -48,4 +37,6 @@ public class Base64 {
 
         return new String(decoder.decode(text.getBytes()));
     }
+
+
 }
