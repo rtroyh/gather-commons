@@ -25,6 +25,10 @@ public class Base64 {
         return org.apache.commons.codec.binary.Base64.encodeBase64String(src);
     }
 
+    public static byte[] decodeStringToByte(String src) {
+        return org.apache.commons.codec.binary.Base64.decodeBase64(src);
+    }
+
     public static String decode(String text,
                                 boolean urlSafe) {
         java.util.Base64.Decoder decoder;
