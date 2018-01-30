@@ -16,17 +16,28 @@ public class Column implements Serializable {
 
     private String headerText;
     private Integer decimalPlaces;
+    private Double proportion;
 
-    public Column(DataType dataType,
-                  Boolean isVisible,
+    public Column(String headerText,
+                  DataType dataType,
+                  Integer decimalPlaces,
                   Boolean showZeros,
-                  String headerText,
-                  Integer decimalPlaces) {
+                  Boolean isVisible,
+                  Double proportion) {
         this.dataType = dataType;
         this.isVisible = isVisible;
         this.showZeros = showZeros;
         this.headerText = headerText;
         this.decimalPlaces = decimalPlaces;
+        this.proportion = proportion;
+    }
+
+    public Double getProportion() {
+        return proportion;
+    }
+
+    public void setProportion(Double proportion) {
+        this.proportion = proportion;
     }
 
     public DataType getDataType() {
