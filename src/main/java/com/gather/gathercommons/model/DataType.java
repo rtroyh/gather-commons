@@ -8,5 +8,18 @@ package com.gather.gathercommons.model;
  * Time: 18:29
  */
 public enum DataType {
-    IMAGE, STRING, NUMBER, UNDEFINED
+    IMAGE(5),
+    STRING(1),
+    NUMBER(2),
+    PERCENTAGE(3);
+
+    private Integer value;
+
+    DataType(Integer value) {
+        this.value = value;
+    }
+
+    public Integer getValue() {
+        return value;
+    }
 }
