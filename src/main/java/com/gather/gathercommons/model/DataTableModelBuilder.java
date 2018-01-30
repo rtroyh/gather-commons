@@ -36,7 +36,7 @@ public class DataTableModelBuilder {
                                            Boolean showZeros,
                                            Boolean isVisible,
                                            Double proportion) {
-        this.model.getHeaders().add(Arrays.asList(new Object[]{headerText, dataType, decimalPlaces, showZeros, isVisible, proportion}));
+        this.model.getHeaders().add(Arrays.asList(new Object[]{headerText, dataType.getValue(), decimalPlaces, showZeros, isVisible, proportion}));
 
         return this;
     }
