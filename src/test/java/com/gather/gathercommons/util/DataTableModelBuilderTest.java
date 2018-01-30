@@ -24,19 +24,25 @@ public class DataTableModelBuilderTest {
 
         final IDataTableModel dataTableModel = new DataTableModelBuilder().createDatatable()
                                                                           .setTitles(new Object[]{100, "Titulo", "Subtitulo"})
-                                                                          .addColumn("Fecha",
-                                                                                     DataType.STRING,
+                                                                          .addColumn("Oculta",
+                                                                                     DataType.NUMBER,
+                                                                                     2,
+                                                                                     false,
+                                                                                     false,
+                                                                                     0.0)
+                                                                          .addColumn("Foto",
+                                                                                     DataType.IMAGE,
                                                                                      0,
                                                                                      false,
                                                                                      true,
                                                                                      0.0)
-                                                                          .addColumn("Folio",
-                                                                                     DataType.STRING,
-                                                                                     0,
+                                                                          .addColumn("UF",
+                                                                                     DataType.NUMBER,
+                                                                                     2,
                                                                                      false,
                                                                                      true,
                                                                                      0.0)
-                                                                          .addColumn("Tipo",
+                                                                          .addColumn("Nombre",
                                                                                      DataType.STRING,
                                                                                      0,
                                                                                      false,
@@ -48,26 +54,8 @@ public class DataTableModelBuilderTest {
                                                                                      false,
                                                                                      true,
                                                                                      0.0)
-                                                                          .addColumn("Fondo",
-                                                                                     DataType.STRING,
-                                                                                     0,
-                                                                                     false,
-                                                                                     true,
-                                                                                     0.0)
-                                                                          .addColumn("Rut Cliente",
-                                                                                     DataType.STRING,
-                                                                                     0,
-                                                                                     false,
-                                                                                     true,
-                                                                                     0.0)
-                                                                          .addColumn("Nombre",
-                                                                                     DataType.STRING,
-                                                                                     0,
-                                                                                     false,
-                                                                                     true,
-                                                                                     0.0)
-                                                                          .addColumn("Estado",
-                                                                                     DataType.STRING,
+                                                                          .addColumn("Porcentaje",
+                                                                                     DataType.PERCENTAGE,
                                                                                      0,
                                                                                      false,
                                                                                      true,

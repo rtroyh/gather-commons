@@ -87,10 +87,14 @@ public class DataTableModelBuilder {
                             row.add(UUID.randomUUID().toString().replace("-",
                                                                          " "));
                         } else if (column.getDataType().equals(DataType.NUMBER)) {
-                            row.add(column.getDecimalPlaces().equals(0) ? ThreadLocalRandom.current().nextInt() : row.add(ThreadLocalRandom.current().nextDouble()));
+                            if (column.getDecimalPlaces().equals(0)) {
+                                row.add(ThreadLocalRandom.current().nextInt());
+                            } else {
+                                row.add(ThreadLocalRandom.current().nextDouble());
+                            }
                         } else if (column.getDataType().equals(DataType.PERCENTAGE)) {
-                            row.add(ThreadLocalRandom.current().nextInt(-100,
-                                                                        100) / 100);
+                            row.add((double) ThreadLocalRandom.current().nextInt(0,
+                                                                                 100) / 100);
                         }
                     }
                 }
