@@ -8,10 +8,13 @@ package com.gather.gathercommons.model;
  * Time: 18:29
  */
 public enum DataType {
-    IMAGE(5),
     STRING(1),
     NUMBER(2),
-    PERCENTAGE(3);
+    PERCENTAGE(3),
+    DATE(4),
+    IMAGE(5),
+    DUMMY_RUT(100),
+    DUMMY_NOMBRE_CLIENTE(101);
 
     private Integer value;
 

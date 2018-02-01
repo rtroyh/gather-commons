@@ -62,7 +62,7 @@ public class DataTableModelBuilder {
                                          isVisible,
                                          proportion));
 
-        this.model.getHeaders().add(Arrays.asList(new Object[]{headerText, dataType.getValue(), decimalPlaces, showZeros, isVisible, proportion}));
+        this.model.getHeaders().add(Arrays.asList(new Object[]{headerText, dataType.getValue(), decimalPlaces, showZeros ? 1 : 0, isVisible ? 1 : 0, proportion}));
 
         return this;
     }
