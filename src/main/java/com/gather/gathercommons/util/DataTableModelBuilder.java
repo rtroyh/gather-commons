@@ -31,15 +31,11 @@ public class DataTableModelBuilder {
     }
 
     private DataTableModelBuilder() {
-        //USAR createDatatable();
+        this.model = new DefaultDataTableModel();
     }
 
-    public DataTableModelBuilder createDatatable() {
-        if (this.model == null) {
-            this.model = new DefaultDataTableModel();
-        }
-
-        return this;
+    public static DataTableModelBuilder createDatatable() {
+        return new DataTableModelBuilder();
     }
 
     public DataTableModelBuilder setTitles(Object[] titles) {
