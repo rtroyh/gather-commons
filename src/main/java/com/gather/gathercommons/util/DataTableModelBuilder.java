@@ -30,8 +30,14 @@ public class DataTableModelBuilder {
         return columns;
     }
 
+    private DataTableModelBuilder() {
+        //USAR createDatatable();
+    }
+
     public DataTableModelBuilder createDatatable() {
-        this.model = new DefaultDataTableModel();
+        if (this.model == null) {
+            this.model = new DefaultDataTableModel();
+        }
 
         return this;
     }
@@ -42,19 +48,12 @@ public class DataTableModelBuilder {
         return this;
     }
 
-    public DataTableModelBuilder addColumn(Object[] column) {
-        this.model.getHeaders().add(Arrays.asList(column));
-
-        return this;
-    }
-
     public DataTableModelBuilder addColumn(String headerText,
                                            DataType dataType,
                                            Integer decimalPlaces,
                                            Boolean showZeros,
                                            Boolean isVisible,
                                            Double proportion) {
-
         this.getColumns().add(new Column(headerText,
                                          dataType,
                                          decimalPlaces,
@@ -62,13 +61,25 @@ public class DataTableModelBuilder {
                                          isVisible,
                                          proportion));
 
-        this.model.getHeaders().add(Arrays.asList(new Object[]{headerText, dataType.getValue(), decimalPlaces, showZeros ? 1 : 0, isVisible ? 1 : 0, proportion}));
-
         return this;
     }
 
     public DataTableModelBuilder addRow(Object[] row) {
         this.model.getRows().add(Arrays.asList(row));
+
+        return this;
+    }
+
+    public DataTableModelBuilder addRow(List<Object> row) {
+        this.model.getRows().add(row);
+
+        return this;
+    }
+
+    public DataTableModelBuilder addRows(List<List<Object>> rows) {
+        for (List<Object> row : rows) {
+            this.model.getRows().add(row);
+        }
 
         return this;
     }
@@ -106,7 +117,23 @@ public class DataTableModelBuilder {
         return this;
     }
 
-    public IDataTableModel build() {
+    public IDataTableModel build() throws
+                                   Exception {
+        if (Validator.validateList(this.getColumns())) {
+            for (Column column : this.getColumns()) {
+                Object[] data = {column.getHeaderText(),
+                                 column.getDataType().getValue(),
+                                 column.getDecimalPlaces(),
+                                 column.getShowZeros() ? 1 : 0,
+                                 column.isVisible() ? 1 : 0,
+                                 column.getProportion()};
+
+                this.model.getHeaders().add(Arrays.asList(data));
+            }
+        } else {
+            throw new Exception("NO SE HAN DEFINIDO LAS COLUMNAS");
+        }
+
         return model;
     }
 }

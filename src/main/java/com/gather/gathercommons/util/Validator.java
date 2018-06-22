@@ -20,23 +20,32 @@ public final class Validator {
         return matcher.matches();
     }
 
+    @Deprecated
     public static boolean valorEsCero(Object x) {
-        boolean valorEsCero = x.equals(0.0) || x.equals(0) || x.equals(0L) || x.equals(0F) || x.equals(new BigDecimal(0));
+        return Validator.isZero(x);
+    }
 
-        if (x instanceof BigDecimal) {
-            BigDecimal valor = (BigDecimal) x;
-            valorEsCero = valorEsCero || (valor.floatValue() == 0);
+    public static boolean isZero(Object x) {
+        if (x != null) {
+            boolean valorEsCero = x.equals(0.0) || x.equals(0) || x.equals(0L) || x.equals(0F) || x.equals(new BigDecimal(0));
+
+            if (x instanceof BigDecimal) {
+                BigDecimal valor = (BigDecimal) x;
+                valorEsCero = valorEsCero || (valor.floatValue() == 0);
+            }
+
+            return valorEsCero;
         }
 
-        return valorEsCero;
+        return false;
     }
 
     public static Boolean validateDate(Object o) {
         if (o != null) {
             if (o instanceof java.sql.Date) {
                 return true;
-            } else if (o instanceof java.util.Date) {
-                return true;
+            } else {
+                return o instanceof java.util.Date;
             }
         }
 
@@ -46,9 +55,7 @@ public final class Validator {
     public static Boolean validateList(Object o) {
         if (o != null) {
             if (o instanceof List) {
-                if (!((List<?>) o).isEmpty()) {
-                    return true;
-                }
+                return !((List<?>) o).isEmpty();
             }
         }
 
@@ -68,9 +75,7 @@ public final class Validator {
         if (o != null) {
             if (o instanceof List) {
                 if (!((List<?>) o).isEmpty()) {
-                    if (((List<?>) o).size() == size) {
-                        return true;
-                    }
+                    return ((List<?>) o).size() == size;
                 }
             }
         }
@@ -103,9 +108,7 @@ public final class Validator {
 
     public static Boolean validateInteger(Object o) {
         if (o != null) {
-            if (o instanceof Integer) {
-                return true;
-            }
+            return o instanceof Integer;
         }
 
         return false;
@@ -130,9 +133,7 @@ public final class Validator {
 
     public static Boolean validateDouble(Object o) {
         if (o != null) {
-            if (o instanceof Double) {
-                return true;
-            }
+            return o instanceof Double;
         }
 
         return false;
@@ -140,9 +141,7 @@ public final class Validator {
 
     public static Boolean validateBigDecimal(Object o) {
         if (o != null) {
-            if (o instanceof BigDecimal) {
-                return true;
-            }
+            return o instanceof BigDecimal;
         }
 
         return false;
@@ -150,9 +149,7 @@ public final class Validator {
 
     public static Boolean validateLong(Object o) {
         if (o != null) {
-            if (o instanceof Long) {
-                return true;
-            }
+            return o instanceof Long;
         }
 
         return false;
@@ -162,9 +159,7 @@ public final class Validator {
                                        Integer x) {
         if (o != null) {
             if (o instanceof Long) {
-                if (o.equals(Long.valueOf(x))) {
-                    return true;
-                }
+                return o.equals(Long.valueOf(x));
             }
         }
 
@@ -173,9 +168,7 @@ public final class Validator {
 
     public static Boolean validateDataTableModel(IDataTableModel model) {
         if (model != null) {
-            if (Validator.validateList(model.getHeaders()) && Validator.validateList(model.getRows())) {
-                return true;
-            }
+            return Validator.validateList(model.getHeaders()) && Validator.validateList(model.getRows());
         }
 
         return false;
