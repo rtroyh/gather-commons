@@ -19,49 +19,50 @@ public class DataTableModelBuilderTest {
     private static final Logger LOG = Logger.getLogger(DataTableModelBuilderTest.class);
 
     @Test
-    public void testMethod() {
+    public void testMethod() throws
+                             Exception {
         LOG.info("INICIO TEST");
 
-        final IDataTableModel dataTableModel = new DataTableModelBuilder().createDatatable()
-                                                                          .setTitles(new Object[]{100, "Titulo", "Subtitulo"})
-                                                                          .addColumn("Oculta",
-                                                                                     DataType.NUMBER,
-                                                                                     2,
-                                                                                     false,
-                                                                                     false,
-                                                                                     0.0)
-                                                                          .addColumn("Foto",
-                                                                                     DataType.IMAGE,
-                                                                                     0,
-                                                                                     false,
-                                                                                     true,
-                                                                                     0.0)
-                                                                          .addColumn("UF",
-                                                                                     DataType.NUMBER,
-                                                                                     2,
-                                                                                     false,
-                                                                                     true,
-                                                                                     0.0)
-                                                                          .addColumn("Nombre",
-                                                                                     DataType.STRING,
-                                                                                     0,
-                                                                                     false,
-                                                                                     true,
-                                                                                     0.0)
-                                                                          .addColumn("Monto",
-                                                                                     DataType.NUMBER,
-                                                                                     0,
-                                                                                     false,
-                                                                                     true,
-                                                                                     0.0)
-                                                                          .addColumn("Porcentaje",
-                                                                                     DataType.PERCENTAGE,
-                                                                                     0,
-                                                                                     false,
-                                                                                     true,
-                                                                                     0.0)
-                                                                          .addRandomRows(10)
-                                                                          .build();
+        final IDataTableModel dataTableModel = DataTableModelBuilder.createDatatable()
+                                                                    .setTitles(new Object[]{100, "Titulo", "Subtitulo"})
+                                                                    .addColumn("Oculta",
+                                                                               DataType.NUMBER,
+                                                                               2,
+                                                                               false,
+                                                                               false,
+                                                                               0.0)
+                                                                    .addColumn("Foto",
+                                                                               DataType.IMAGE,
+                                                                               0,
+                                                                               false,
+                                                                               true,
+                                                                               0.0)
+                                                                    .addColumn("UF",
+                                                                               DataType.NUMBER,
+                                                                               2,
+                                                                               false,
+                                                                               true,
+                                                                               0.0)
+                                                                    .addColumn("Nombre",
+                                                                               DataType.STRING,
+                                                                               0,
+                                                                               false,
+                                                                               true,
+                                                                               0.0)
+                                                                    .addColumn("Monto",
+                                                                               DataType.NUMBER,
+                                                                               0,
+                                                                               false,
+                                                                               true,
+                                                                               0.0)
+                                                                    .addColumn("Porcentaje",
+                                                                               DataType.PERCENTAGE,
+                                                                               0,
+                                                                               false,
+                                                                               true,
+                                                                               0.0)
+                                                                    .addRandomRows(10)
+                                                                    .build();
         for (List<Object> objects : dataTableModel.getHeaders()) {
             LOG.info(objects);
         }
