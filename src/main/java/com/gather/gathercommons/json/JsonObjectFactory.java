@@ -17,6 +17,7 @@ public class JsonObjectFactory {
     public static JsonElement getJson(IDataTableModel model,
                                       Boolean includeHiddenCell) throws
                                                                  NoRowException {
+
         if (model == null) {
             return new JsonObject();
         }
@@ -103,7 +104,14 @@ public class JsonObjectFactory {
                 JsonObject jsonElement = new JsonObject();
                 Integer indexElement = 0;
                 for (Object element : row) {
-                    JsonPrimitive jsonPrimitive = getPrimitiveElement(element);
+                    JsonPrimitive jsonPrimitive;
+                    if (element != null) {
+                        jsonPrimitive = getPrimitiveElement(element);
+
+                    } else {
+                        jsonPrimitive = getPrimitiveElement("");
+                    }
+
                     jsonElement.add(indexElement.toString(),
                                     jsonPrimitive);
                     indexElement++;
@@ -122,7 +130,8 @@ public class JsonObjectFactory {
                 JsonObject jsonElement = new JsonObject();
 
                 for (Integer indexCell = 0; indexCell < row.size(); indexCell++) {
-                    JsonPrimitive jsonPrimitive = getPrimitiveElement(row.get(indexCell));
+                    Object cellElement = row.get(indexCell) != null ? row.get(indexCell) : "";
+                    JsonPrimitive jsonPrimitive = getPrimitiveElement(cellElement);
                     try {
                         jsonElement.add(propertyTitle.get(indexCell),
                                         jsonPrimitive);
