@@ -1,8 +1,8 @@
 package com.gather.gathercommons.util;
 
-import com.gather.gathercommons.model.Column;
 import com.gather.gathercommons.model.DataType;
 import com.gather.gathercommons.model.DefaultDataTableModel;
+import com.gather.gathercommons.model.Header;
 import com.gather.gathercommons.model.IDataTableModel;
 
 import java.util.ArrayList;
@@ -20,14 +20,14 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 public class DataTableModelBuilder {
     private IDataTableModel model;
-    private List<Column> columns;
+    private List<Header> header;
 
-    private List<Column> getColumns() {
-        if (columns == null) {
-            columns = new ArrayList<>();
+    private List<Header> getHeader() {
+        if (header == null) {
+            header = new ArrayList<>();
         }
 
-        return columns;
+        return header;
     }
 
     private DataTableModelBuilder() {
@@ -50,12 +50,12 @@ public class DataTableModelBuilder {
                                            Boolean showZeros,
                                            Boolean isVisible,
                                            Double proportion) {
-        this.getColumns().add(new Column(headerText,
-                                         dataType,
-                                         decimalPlaces,
-                                         showZeros,
-                                         isVisible,
-                                         proportion));
+        this.getHeader().add(new Header(headerText,
+                                        dataType,
+                                        decimalPlaces,
+                                        showZeros,
+                                        isVisible,
+                                        proportion));
 
         return this;
     }
@@ -83,23 +83,23 @@ public class DataTableModelBuilder {
     public DataTableModelBuilder addRandomRows(Integer count) {
         for (Integer i = 0; i < count; i++) {
 
-            if (Validator.validateList(this.getColumns())) {
+            if (Validator.validateList(this.getHeader())) {
                 List<Object> row = new ArrayList<>();
 
-                for (Column column : this.getColumns()) {
-                    if (column.isVisible()) {
-                        if (column.getDataType().equals(DataType.IMAGE)) {
+                for (Header header : this.getHeader()) {
+                    if (header.isVisible()) {
+                        if (header.getDataType().equals(DataType.IMAGE)) {
                             row.add("imagen.png");
-                        } else if (column.getDataType().equals(DataType.STRING)) {
+                        } else if (header.getDataType().equals(DataType.STRING)) {
                             row.add(UUID.randomUUID().toString().replace("-",
                                                                          " "));
-                        } else if (column.getDataType().equals(DataType.NUMBER)) {
-                            if (column.getDecimalPlaces().equals(0)) {
+                        } else if (header.getDataType().equals(DataType.NUMBER)) {
+                            if (header.getDecimalPlaces().equals(0)) {
                                 row.add(ThreadLocalRandom.current().nextInt());
                             } else {
                                 row.add(ThreadLocalRandom.current().nextDouble());
                             }
-                        } else if (column.getDataType().equals(DataType.PERCENTAGE)) {
+                        } else if (header.getDataType().equals(DataType.PERCENTAGE)) {
                             row.add((double) ThreadLocalRandom.current().nextInt(0,
                                                                                  100) / 100);
                         }
@@ -115,14 +115,14 @@ public class DataTableModelBuilder {
 
     public IDataTableModel build() throws
                                    Exception {
-        if (Validator.validateList(this.getColumns())) {
-            for (Column column : this.getColumns()) {
-                Object[] data = {column.getHeaderText(),
-                                 column.getDataType().getValue(),
-                                 column.getDecimalPlaces(),
-                                 column.getShowZeros() ? 1 : 0,
-                                 column.isVisible() ? 1 : 0,
-                                 column.getProportion()};
+        if (Validator.validateList(this.getHeader())) {
+            for (Header header : this.getHeader()) {
+                Object[] data = {header.getHeaderText(),
+                                 header.getDataType().getValue(),
+                                 header.getDecimalPlaces(),
+                                 header.getShowZeros() ? 1 : 0,
+                                 header.isVisible() ? 1 : 0,
+                                 header.getProportion()};
 
                 this.model.getHeaders().add(Arrays.asList(data));
             }
