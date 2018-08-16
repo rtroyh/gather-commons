@@ -9,7 +9,7 @@ import java.io.Serializable;
  * Date: 27-07-16
  * Time: 11:24
  */
-public class Column implements Serializable {
+public class Header implements Serializable {
     private DataType dataType;
     private Boolean isVisible;
     private Boolean showZeros;
@@ -18,7 +18,7 @@ public class Column implements Serializable {
     private Integer decimalPlaces;
     private Double proportion;
 
-    public Column(String headerText,
+    public Header(String headerText,
                   DataType dataType,
                   Integer decimalPlaces,
                   Boolean showZeros,

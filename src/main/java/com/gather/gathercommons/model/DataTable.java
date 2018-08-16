@@ -10,29 +10,31 @@ import java.util.List;
  * Date: 1/30/18
  * Time: 11:02
  */
-public class DataTable implements Serializable {
+public class DataTable<E> implements Serializable {
     private IDataTableModel dataTableModel;
 
-    private List<Column> columnList;
-    private List<Row> rowList;
+    private List<Object> titles;
+    private List<Header> headerMetadata;
+    private List<E> rows;
 
     public DataTable(IDataTableModel dataTableModel) {
         this.dataTableModel = dataTableModel;
     }
 
-    public List<Column> getColumnList() {
-        return columnList;
+    public List<Header> getHeaderMetadata() {
+
+        return headerMetadata;
     }
 
-    public void setColumnList(List<Column> columnList) {
-        this.columnList = columnList;
+    public void setHeaderMetadata(List<Header> headerMetadata) {
+        this.headerMetadata = headerMetadata;
     }
 
-    public List<Row> getRowList() {
-        return rowList;
+    public List<E> getRows() {
+        return rows;
     }
 
-    public void setRowList(List<Row> rowList) {
-        this.rowList = rowList;
+    public void setRows(List<E> rows) {
+        this.rows = rows;
     }
 }
