@@ -10,7 +10,11 @@ import java.util.List;
  * Time: 15:17
  */
 public interface IDataTable<E> {
-    List<Header> getColumns();
+    List<Object> getTitles();
+
+    List<Header> getHeaders();
 
     List<E> getRows();
+
+    Boolean isEmpty();
 }
