@@ -1,10 +1,16 @@
 package com.gather.gathercommons.util;
 
 import com.gather.gathercommons.model.IDataTableModel;
+import com.gather.gathercommons.model.datatable.DataTable;
 import com.gather.gathercommons.model.datatable.DataType;
+import com.gather.gathercommons.model.datatable.DefaultDomainObjectMapper;
+import com.gather.gathercommons.model.datatable.Header;
 import org.apache.log4j.Logger;
+import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -66,6 +72,22 @@ public class DataTableTest {
 
     @Test
     public void test() {
+        LOG.info("INICIO TEST");
 
+        DataTable<List<Object>> dataTable = new DataTable<>(this.dataTableModel,
+                                                            new DefaultDomainObjectMapper());
+
+        Assert.assertFalse(dataTable.isEmpty());
+        Assert.assertTrue(Validator.validateList(dataTable.getRows()));
+        Assert.assertTrue(Validator.validateList(dataTable.getHeaders()));
+        Assert.assertTrue(Validator.validateList(dataTable.getTitles()));
+
+        for (Header header : dataTable.getHeaders()) {
+            LOG.info(header.getHeaderText() + " | tipo: " + header.getDataType().name());
+        }
+
+        for (List<Object> row : dataTable.getRows()) {
+            LOG.info(row);
+        }
     }
 }
