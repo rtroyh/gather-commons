@@ -1,4 +1,4 @@
-package com.gather.gathercommons.model;
+package com.gather.gathercommons.model.datatable;
 
 /**
  * Created with IntelliJ IDEA.
@@ -8,6 +8,7 @@ package com.gather.gathercommons.model;
  * Time: 18:29
  */
 public enum DataType {
+    UNKNOWN(-9999),
     STRING(1),
     NUMBER(2),
     PERCENTAGE(3),

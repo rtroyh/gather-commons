@@ -1,7 +1,7 @@
 package com.gather.gathercommons.util;
 
-import com.gather.gathercommons.model.DataType;
 import com.gather.gathercommons.model.IDataTableModel;
+import com.gather.gathercommons.model.datatable.DataType;
 import org.apache.log4j.Logger;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;

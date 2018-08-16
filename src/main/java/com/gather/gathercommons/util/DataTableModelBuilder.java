@@ -1,9 +1,9 @@
 package com.gather.gathercommons.util;
 
-import com.gather.gathercommons.model.DataType;
 import com.gather.gathercommons.model.DefaultDataTableModel;
-import com.gather.gathercommons.model.Header;
 import com.gather.gathercommons.model.IDataTableModel;
+import com.gather.gathercommons.model.datatable.DataType;
+import com.gather.gathercommons.model.datatable.Header;
 
 import java.util.ArrayList;
 import java.util.Arrays;

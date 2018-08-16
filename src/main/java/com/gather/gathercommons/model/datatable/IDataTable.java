@@ -1,4 +1,4 @@
-package com.gather.gathercommons.model;
+package com.gather.gathercommons.model.datatable;
 
 import java.util.List;
 
@@ -12,9 +12,15 @@ import java.util.List;
 public interface IDataTable<E> {
     List<Object> getTitles();
 
+    void setTitles(List<Object> titles);
+
     List<Header> getHeaders();
 
+    void setHeaders(List<Header> headers);
+
     List<E> getRows();
+
+    void setRows(List<E> rows);
 
     Boolean isEmpty();
 }

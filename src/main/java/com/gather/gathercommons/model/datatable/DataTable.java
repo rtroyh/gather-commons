@@ -1,8 +1,8 @@
-package com.gather.gathercommons.model;
+package com.gather.gathercommons.model.datatable;
 
+import com.gather.gathercommons.model.IDataTableModel;
 import com.gather.gathercommons.util.Validator;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,16 +13,22 @@ import java.util.List;
  * Date: 1/30/18
  * Time: 11:02
  */
-public class DataTable<E> implements IDataTable,
-                                     Serializable {
+public class DataTable<E> implements IDataTable<E> {
     private IDataTableModel dataTableModel;
 
+    private IDomainObjectMapper<E> businessObjectMapper;
+    private IHeaderBuilder headerBuilder;
     private List<Object> titles;
     private List<Header> headers;
     private List<E> rows;
 
-    public DataTable(IDataTableModel dataTableModel) {
+    public DataTable(IDataTableModel dataTableModel,
+                     IDomainObjectMapper<E> businessObjectMapper) {
         this.dataTableModel = dataTableModel;
+        this.headerBuilder = new DefaultHeaderBuilder();
+        this.businessObjectMapper = businessObjectMapper;
+
+        this.build();
     }
 
     public List<Object> getTitles() {
@@ -57,12 +63,26 @@ public class DataTable<E> implements IDataTable,
         return rows;
     }
 
-    @Override
+    public void setRows(List<E> rows) {
+        this.rows = rows;
+    }
+
     public Boolean isEmpty() {
         return !Validator.validateList(this.rows);
     }
 
-    public void setRows(List<E> rows) {
-        this.rows = rows;
+    private void build() {
+        if (this.businessObjectMapper == null) {
+            throw new NullPointerException("NO EXISTE UN MAPPER");
+        }
+
+        for (List<Object> header : dataTableModel.getHeaders()) {
+            this.getHeaders().add(headerBuilder.createHeader(header));
+        }
+
+        for (List<Object> row : dataTableModel.getRows()) {
+            this.getRows().add(this.businessObjectMapper.createObject(row));
+        }
     }
+
 }

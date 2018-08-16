@@ -1,4 +1,4 @@
-package com.gather.gathercommons.model;
+package com.gather.gathercommons.model.datatable;
 
 import java.io.Serializable;
 
