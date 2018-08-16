@@ -76,6 +76,10 @@ public class DataTable<E> implements IDataTable<E> {
             throw new NullPointerException("NO EXISTE UN MAPPER");
         }
 
+        if (Validator.validateList(this.dataTableModel.getTitles())) {
+            this.setTitles(dataTableModel.getTitles().get(0));
+        }
+
         for (List<Object> header : dataTableModel.getHeaders()) {
             this.getHeaders().add(headerBuilder.createHeader(header));
         }
