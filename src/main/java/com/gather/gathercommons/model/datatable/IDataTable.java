@@ -22,5 +22,9 @@ public interface IDataTable<E extends IListHolder> {
 
     void setRows(List<E> rows);
 
+    E getSelectedRow();
+
+    void setSelectedRow(E selectedRow);
+
     Boolean isEmpty();
 }

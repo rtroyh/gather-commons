@@ -21,6 +21,7 @@ public class DataTable<E extends IListHolder> implements IDataTable<E> {
     private List<Object> titles;
     private List<Header> headers;
     private List<E> rows;
+    private E selectedRow;
 
     public DataTable(IDataTableModel dataTableModel,
                      IDomainObjectMapper<E> businessObjectMapper) {
@@ -29,6 +30,14 @@ public class DataTable<E extends IListHolder> implements IDataTable<E> {
         this.businessObjectMapper = businessObjectMapper;
 
         this.build();
+    }
+
+    public E getSelectedRow() {
+        return selectedRow;
+    }
+
+    public void setSelectedRow(E selectedRow) {
+        this.selectedRow = selectedRow;
     }
 
     public List<Object> getTitles() {
