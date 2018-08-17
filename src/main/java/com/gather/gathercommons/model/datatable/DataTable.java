@@ -13,7 +13,7 @@ import java.util.List;
  * Date: 1/30/18
  * Time: 11:02
  */
-public class DataTable<E> implements IDataTable<E> {
+public class DataTable<E extends IListHolder> implements IDataTable<E> {
     private IDataTableModel dataTableModel;
 
     private IDomainObjectMapper<E> businessObjectMapper;

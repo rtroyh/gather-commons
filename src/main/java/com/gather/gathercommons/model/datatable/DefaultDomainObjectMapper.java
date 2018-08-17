@@ -9,9 +9,9 @@ import java.util.List;
  * Date: 8/16/18
  * Time: 19:52
  */
-public class DefaultDomainObjectMapper implements IDomainObjectMapper<List<Object>> {
+public class DefaultDomainObjectMapper implements IDomainObjectMapper<DefaultListHolder> {
     @Override
-    public List<Object> createObject(List<Object> list) {
-        return list;
+    public DefaultListHolder createObject(List<Object> list) {
+        return new DefaultListHolder(list);
     }
 }

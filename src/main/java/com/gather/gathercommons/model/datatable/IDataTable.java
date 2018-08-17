@@ -9,7 +9,7 @@ import java.util.List;
  * Date: 8/16/18
  * Time: 15:17
  */
-public interface IDataTable<E> {
+public interface IDataTable<E extends IListHolder> {
     List<Object> getTitles();
 
     void setTitles(List<Object> titles);

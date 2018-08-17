@@ -6,9 +6,9 @@ import java.util.List;
  * Created with IntelliJ IDEA.
  * $ Project: gathercommons
  * User: rodrigotroy
- * Date: 8/16/18
- * Time: 19:26
+ * Date: 8/17/18
+ * Time: 13:46
  */
-public interface IDomainObjectMapper<E extends IListHolder> {
-    E createObject(List<Object> list);
+public interface IListHolder {
+    List<Object> getList();
 }
