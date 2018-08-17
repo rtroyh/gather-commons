@@ -20,10 +20,10 @@ public class DefaultHeaderBuilder implements IHeaderBuilder {
             header = new Header(SecureValue.cellRowToString(list,
                                                             0),
                                 this.resolveDatatype(list.get(1)),
-                                Integer.valueOf(list.get(2).toString()),
-                                Integer.valueOf(list.get(3).toString()).equals(0),
-                                Integer.valueOf(list.get(4).toString()).equals(0),
-                                null);
+                                Validator.validateNumber(2) ? Integer.valueOf(list.get(2).toString()) : 0,
+                                Validator.validateNumber(list.get(3)) && Integer.valueOf(list.get(3).toString()).equals(1),
+                                Validator.validateNumber(list.get(4)) && Integer.valueOf(list.get(4).toString()).equals(1),
+                                Validator.validateNumber(list.get(5)) ? Double.valueOf(list.get(4).toString()) : 1);
         }
 
         return header;
