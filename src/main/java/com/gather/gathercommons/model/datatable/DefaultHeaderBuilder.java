@@ -22,7 +22,7 @@ public class DefaultHeaderBuilder implements IHeaderBuilder {
                                 this.resolveDatatype(list.get(1)),
                                 Validator.validateNumber(2) ? Integer.valueOf(list.get(2).toString()) : 0,
                                 Validator.validateNumber(list.get(3)) && Integer.valueOf(list.get(3).toString()).equals(1),
-                                Validator.validateNumber(list.get(4)) && Integer.valueOf(list.get(4).toString()).equals(1),
+                                Validator.validateNumber(list.get(4)) && !Integer.valueOf(list.get(4).toString()).equals(0),
                                 Validator.validateNumber(list.get(5)) ? Double.valueOf(list.get(4).toString()) : 1);
         }
 
