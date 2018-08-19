@@ -89,6 +89,10 @@ public class DataTable<E extends IListHolder> implements IDataTable<E> {
             this.setTitles(dataTableModel.getTitles().get(0));
         }
 
+        if (Validator.validateList(this.dataTableModel.getSelectedRow())) {
+            this.setSelectedRow(this.businessObjectMapper.createObject(this.dataTableModel.getSelectedRow()));
+        }
+
         for (List<Object> header : dataTableModel.getHeaders()) {
             this.getHeaders().add(headerBuilder.createHeader(header));
         }
