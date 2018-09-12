@@ -18,7 +18,7 @@ public class HeaderLayoutBuilder implements IHeaderLayoutBuilder {
         HeaderLayout header = null;
         if (Validator.validateList(list) && list.size() >= 3) {
             header = new HeaderLayout(Validator.validateNumber(list.get(0)) ? Integer.valueOf(list.get(0).toString()) : 1,
-                                      Validator.validateNumber(list.get(1)) ? Integer.valueOf(list.get(0).toString()) : 1,
+                                      Validator.validateNumber(list.get(1)) ? Integer.valueOf(list.get(1).toString()) : 1,
                                       SecureValue.cellRowToString(list,
                                                                   2));
         }
