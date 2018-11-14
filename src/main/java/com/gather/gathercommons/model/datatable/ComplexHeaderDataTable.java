@@ -28,6 +28,19 @@ public class ComplexHeaderDataTable<E extends IListHolder> extends DataTable {
         this.build();
     }
 
+    public ComplexHeaderDataTable(IComplexHeaderDataTableModel complexHeaderDataTableModel,
+                                  IHeaderBuilder headerBuilder,
+                                  IDomainObjectMapper<E> businessObjectMapper) {
+        super(complexHeaderDataTableModel,
+              headerBuilder,
+              businessObjectMapper);
+
+        this.headerLayoutBuilder = new HeaderLayoutBuilder();
+        this.complexHeaderDataTableModel = complexHeaderDataTableModel;
+
+        this.build();
+    }
+
     public List<HeaderLayout> getHeaderLayouts() {
         if (headerLayouts == null) {
             headerLayouts = new ArrayList<>();

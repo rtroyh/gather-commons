@@ -55,7 +55,8 @@ public class DataTableModelBuilder {
                                         decimalPlaces,
                                         showZeros,
                                         isVisible,
-                                        proportion));
+                                        proportion,
+                                        null));
 
         return this;
     }
