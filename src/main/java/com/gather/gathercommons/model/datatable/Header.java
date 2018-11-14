@@ -18,18 +18,34 @@ public class Header implements Serializable {
     private Integer decimalPlaces;
     private Double proportion;
 
+    private ColumnAlignment columnAlignment;
+
     public Header(String headerText,
                   DataType dataType,
                   Integer decimalPlaces,
                   Boolean showZeros,
                   Boolean isVisible,
-                  Double proportion) {
+                  Double proportion,
+                  ColumnAlignment columnAlignment) {
         this.dataType = dataType;
         this.isVisible = isVisible;
         this.showZeros = showZeros;
         this.headerText = headerText;
         this.decimalPlaces = decimalPlaces;
         this.proportion = proportion;
+        this.columnAlignment = columnAlignment;
+    }
+
+    public ColumnAlignment getColumnAlignment() {
+        if (columnAlignment == null) {
+            columnAlignment = ColumnAlignment.LEFT;
+        }
+
+        return columnAlignment;
+    }
+
+    public void setColumnAlignment(ColumnAlignment columnAlignment) {
+        this.columnAlignment = columnAlignment;
     }
 
     public Double getProportion() {

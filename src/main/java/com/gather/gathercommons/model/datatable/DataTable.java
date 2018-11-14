@@ -32,6 +32,17 @@ public class DataTable<E extends IListHolder> implements IDataTable<E> {
         this.build();
     }
 
+    public DataTable(IDataTableModel dataTableModel,
+                     IHeaderBuilder headerBuilder,
+                     IDomainObjectMapper<E> businessObjectMapper) {
+        this.dataTableModel = dataTableModel;
+        this.headerBuilder = headerBuilder;
+        this.businessObjectMapper = businessObjectMapper;
+
+        this.build();
+    }
+
+
     public E getSelectedRow() {
         return selectedRow;
     }
